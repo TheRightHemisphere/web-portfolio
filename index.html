@@ -1,0 +1,254 @@
+body {
+    background-color: #0d0b09;
+    color: #eae0d5;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    overflow-x: hidden;
+}
+h1, h2, h3, .font-display {
+    font-family: 'Syne', sans-serif;
+}
+.sunset-gradient-text {
+    background: linear-gradient(135deg, #fff5ea 0%, #ffd166 35%, #fb8500 75%, #e76f51 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.editorial-italic {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-weight: 600;
+}
+.border-glow {
+    border: 1px solid rgba(251, 133, 0, 0.3);
+    box-shadow: 0 0 40px rgba(251, 133, 0, 0.12);
+}
+.modal-backdrop {
+    background-color: rgba(13, 11, 9, 0.92);
+    backdrop-filter: blur(14px);
+}
+
+@keyframes floatSlow {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-12px) rotate(1.2deg); }
+}
+@keyframes pulseGlow {
+    0%, 100% { opacity: 0.18; transform: scale(1); }
+    50% { opacity: 0.35; transform: scale(1.1); }
+}
+@keyframes flyUpPainfully {
+    0% { transform: translateY(50px) scale(0.96); opacity: 0.2; }
+    50% { transform: translateY(-10px) scale(1.02); opacity: 0.95; }
+    100% { transform: translateY(-70px) scale(0.95) rotate(-3deg); opacity: 0.3; }
+}
+@keyframes priceJarPop {
+    0%, 100% { transform: scale(1); background-color: #1e3a8a; color: #93c5fd; }
+    50% { transform: scale(1.18); background-color: #991b1b; color: #fca5a5; box-shadow: 0 0 20px rgba(239, 68, 68, 0.6); }
+}
+@keyframes sproutGrowth {
+    0% { transform: scale(0.8) translateY(4px); }
+    50% { transform: scale(1.1) translateY(-2px); }
+    100% { transform: scale(1) translateY(0); }
+}
+.animate-float-slow { animation: floatSlow 7s ease-in-out infinite; }
+.animate-pulse-glow { animation: pulseGlow 8s ease-in-out infinite; }
+.animate-fly-money-1 { animation: flyUpPainfully 7s cubic-bezier(0.25, 1, 0.5, 1) infinite alternate; }
+.animate-fly-money-2 { animation: flyUpPainfully 7s cubic-bezier(0.25, 1, 0.5, 1) 2.3s infinite alternate; }
+.animate-fly-money-3 { animation: flyUpPainfully 7s cubic-bezier(0.25, 1, 0.5, 1) 4.6s infinite alternate; }
+.animate-price-jar { animation: priceJarPop 3s ease-in-out infinite; }
+.animate-sprout { animation: sproutGrowth 4s ease-in-out infinite; }
+
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: #0d0b09; }
+::-webkit-scrollbar-thumb { background: #221a15; border-radius: 9999px; }
+::-webkit-scrollbar-thumb:hover { background: #fb8500; }
+
+.status-dot {
+    width: 8px; height: 8px; background-color: #10b981; border-radius: 50%;
+    display: inline-block; box-shadow: 0 0 10px rgba(16, 185, 129, 0.6);
+}
+.status-dot.pulse { animation: pulse-teal 2s infinite ease-in-out; }
+@keyframes pulse-teal {
+    0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); }
+    70% { transform: scale(1.15); box-shadow: 0 0 0 8px rgba(16, 185, 129, 0); }
+    100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+}
+
+document.getElementById('year').textContent = new Date().getFullYear();
+
+function toggleMobileMenu() {
+    const menu = document.getElementById('mobileMenu');
+    menu.classList.toggle('hidden');
+}
+
+function toggleAccordion(id) {
+    const body = document.getElementById('body-' + id);
+    const icon = document.getElementById('icon-' + id);
+    if (body.classList.contains('hidden')) {
+        body.classList.remove('hidden');
+        icon.textContent = '−';
+    } else {
+        body.classList.add('hidden');
+        icon.textContent = '+';
+    }
+}
+
+function openAuditModal() {
+    document.getElementById('auditModal').classList.remove('hidden');
+}
+
+function closeAuditModal() {
+    document.getElementById('auditModal').classList.add('hidden');
+}
+
+function selectService(serviceValue) {
+    const select = document.getElementById('serviceType');
+    if (select) {
+        select.value = serviceValue;
+    }
+}
+
+// Formspree Asynchronous Submissions Handler (Protected)
+const contactForm = document.getElementById('contactForm');
+if (contactForm) {
+    contactForm.addEventListener('submit', async function(e) {
+        e.preventDefault();
+        const form = e.target;
+        const data = new FormData(form);
+        
+        try {
+            const response = await fetch(form.action, {
+                method: form.method,
+                body: data,
+                headers: { 'Accept': 'application/json' }
+            });
+            
+            if (response.ok) {
+                contactForm.classList.add('hidden');
+                document.getElementById('formSuccess').classList.remove('hidden');
+                form.reset();
+            } else {
+                const resData = await response.json();
+                const msg = resData.errors ? resData.errors.map(err => err.message).join(", ") : "Oops! Problem submitting form.";
+                alert(msg);
+            }
+        } catch (err) {
+            alert("Network error. Please try again or email directly.");
+        }
+    });
+}
+
+// Language Toggle logic
+let currentLang = 'EN';
+
+const translations = {
+    EN: {
+        tagline: "Tiotia:ke (Montréal, QC) based · Web & Security Audit",
+        nav_value: "Fair Value", nav_services: "Services", nav_mailbox: "Outreach Vibe", nav_demo: "Sample Audit", nav_about: "About", nav_contact: "Contact", nav_cta: "Request 24h Audit ($125)",
+        hero_badge: "Tiotia:ke (Montréal) based & Remote Projects", hero_title_1: "Warm & Organic", hero_title_2: "tech solutions, just like your services.", hero_desc: "Full-stack repairs, mobile menu & layout debugging, security credential audits, and bilingual editorial reviews — supporting local vendors, artists & QTBiPOC creative communities in Tiotia:ke / Montréal.", hero_btn_primary: "Request $125 CAD Audit", hero_btn_secondary: "View Demonstration Audit", hero_stat1_title: "24 Hours", hero_stat1_desc: "Express Turnaround", hero_stat1_2_desc: "Fixed Upfront Price", hero_stat1_3_title: "100% Private", hero_stat1_3_desc: "Strict Confidentiality", hero_card_flag: "Flagship Offer", hero_card_sub: "24-Hour Express Turnaround", hero_card_title: "Website & Security Audit", hero_card_fixed: "Fixed upfront price", hero_card_body: "Receive 5 prioritized actionable findings with screenshots, exact line references, broken link/accessibility checks, exposed credential hygiene check, and clear fixes.", hero_card_item1: "Mobile layout & menu conversion review", hero_card_item2: "Bilingual consistency check (EN / FR)", hero_card_item3: "Security hygiene (Exposed API key/config check)", hero_card_item_confidential: "100% Confidential report (Never published)", hero_card_btn1: "Request $125 CAD Audit", hero_card_btn2: "Preview Sample Audit Report",
+        market_subtitle: "Fair Market Perspective", market_title: "Money Painfully Spent vs. Grounded Local Value", market_desc: "High-end digital agency quotes often fly into astronomical price ranges for simple fixes. Here is how my honest, independent rates keep your budget grounded.", m_bubble1_tag: "Agency Retainer Quote", m_bubble1_title: "Complex Corporate Onboarding", m_bubble1_desc: "3-week discovery calls, multiple account managers, and bloated PDF reports before a single line of code is fixed.", m_bubble2_tag: "Corporate Audit Firm", m_bubble2_title: "Automated Software Dump", m_bubble2_desc: "Generic software scans filled with tech buzzwords that lack human context, local Montréal bilingual nuance, or clear solutions.", m_bubble3_tag: "Hourly Markup Trap", m_bubble3_title: "Over-Engineered Scope", m_bubble3_desc: "Charging enterprise hours for minor CSS adjustments, menu fixes, or basic SSL certificate configurations.", sprout_tag: "Grounded Community Roots", sprout_sub: "Fair Local Pricing • No Corporate Bloat", m_khaleb_title: "Direct, Human & Accessible", m_khaleb_text: "You get a dedicated developer based in Tiotia:ke (Montréal) who inspects your site line-by-line. No account managers, no hidden retainer traps — just actionable fixes delivered within 24 hours.", m_row1_t: "24h Express Website Audit", m_row1_d: "5 prioritized findings & security hygiene", m_row2_t: "Full Mobile, Desktop & Performance Package", m_row2_d: "Clean responsive rebuild, zero jank, instant loading", m_khaleb_cta: "Choose Fair Local Pricing",
+        services_subtitle: "What I Do", services_title: "Full-Stack Code, Design & Security", services_desc: "Honest, outcome-focused freelance services designed to fix real technical problems for small businesses and independent creators.", s1_title: "24-Hour Website Audit", s1_price: "$125 CAD Upfront", s1_desc: "Comprehensive 5-point confidential report covering mobile clarity, call-to-action visibility, accessibility basics, page speed bottlenecks, and user trust signals.", s2_title: "Site & App Repair / Debugging", s2_price: "$295 CAD Package", s2_desc: "Fast troubleshooting for broken layouts, Javascript errors, mobile viewport bugs, React state issues, CSS fixes, and performance bottlenecks.", s3_title: "Security & Credential Hygiene", s3_price: "Authorized reviews only", s3_desc: "Audit sites or web repositories you own for accidentally exposed API keys, unsafe environment files (.env), missing SSL/CORS headers, and basic pentesting.", s4_title: "Web, App & Game Build", s4_price: "Single-page & full builds", s4_desc: "Building lightweight, high-speed modern single-page applications, custom HTML/Tailwind web tools, landing pages, and interactive web games.", s5_title: "Bilingual Copy & Music Reviews", s5_price: "Content & Editorial", s5_desc: "Human-sounding English & Montréal-French rewriting, blog posts, sales copy refinement, and articulate music/album reviews for independent artists.", s6_title: "Technical Maintenance", s6_price: "Flexible Retainer", s6_desc: "Monthly ongoing checkups, security updates, domain management, backups, and site updates so your online presence never falls behind.", service_select: "Select this service →",
+        mail_subtitle: "Communication Philosophy", mail_title: "Generic Email Spam vs. Authentic Community Vibe", mail_desc: "Small business owners and local artists get spammed daily by automated bots. Here is how my personal, transparent approach respects your inbox and builds long-term trust.", inbox_spam_t: "Generic Inbox Spam", inbox_spam_sub: "Automated Bot Pitches & Complaint Complaints", inbox_spam_badge: "99+ Unread Spam", spam1_subject: "\"URGENT: Your website page #1 ranking guaranteed!!\"", spam1_body: "Dear Sir/Madam, we noticed your website lacks backlinks. Pay $500/mo now for 10,000 links...", spam2_subject: "Review: \"Menu won't open on phone!\"", spam2_body: "\"Forced 15MB PDF download on mobile! Can't find opening hours or services!\"", spam_footer_t: "The Outcome:", spam_footer_d: "Ignored emails, frustrated website visitors, lost walk-in customers, and zero trust.", inbox_human_t: "Khaleb's Direct Outreach", inbox_human_sub: "Human, Local & Personalized", inbox_human_badge: "100% Transparent", human_mail_sub: "\"Small fix for your mobile site / Petit détail sur votre menu mobile\"", human_mail_body: "\"Bonjour! I was checking out your website on my phone and noticed your menu opens as a PDF download instead of a quick mobile view. I run $125 CAD 24-hour confidential audits for Montréal local businesses, vendors, and creators. All findings stay strictly private.\"", human_vibe_t: "Supporting Local & QTBiPOC Community Creators:", human_footer_t: "Long-Term Value:", human_footer_d: "Build real relationships that keep your brand thriving through winter.",
+        demo_subtitle: "Proof of Quality", demo_title: "Demonstration Website & Security Audit", demo_disclaimer: "*Demonstration report using a fictional Montréal café (North Star Café). No client relationship implied.", p_high: "HIGH PRIORITY", p_med: "MEDIUM PRIORITY", f1_title: "Finding 1: Unclear Primary Call to Action on Mobile", f2_title: "Finding 2: Mobile Contact Information Obscured", f3_title: "Finding 3: Weak Social Proof & Customer Reviews", f4_title: "Finding 4: Inconsistent Bilingual (EN / FR) Experience", f5_title: "Finding 5: Exposed Config & API Key Vulnerability", demo_banner_title: "Want a report like this for your website?", demo_banner_sub: "Delivered in 24 hours with exact prioritized fixes for $125 CAD. Strictly confidential.", demo_banner_btn: "View Full Sample PDF Layout",
+        proc_subtitle: "Protected & Confidential Workflow", proc_title: "5-Step Scam-Free Working Process", proc_desc: "Clear scope, upfront fixed pricing, 100% confidentiality, and transparent delivery protects both sides from fraud and hidden fees.", step1_t: "Submit Site", step1_d: "Send URL & permissions check via contact form.", step2_t: "Scope & Agreement", step2_d: "Fixed price ($125 CAD) and scope agreed in writing.", step3_t: "Secure Payment", step3_d: "Payment received via Interac e-Transfer or PayPal.", step4_t: "24h Confidential Report", step4_d: "Receive your private 5-point report & code fixes.", step5_t: "Optional Fixes", step5_d: "Implementation quoted separately with zero obligation.", fraud_title: "Strict Payment & Confidentiality Protection Policy", fraud_heading: "Zero Cheque / Verified Payments / 100% Client Privacy", fraud_text: "To prevent Canadian Anti-Fraud Centre job/service scams: Work begins strictly after payment is received via legitimate Interac e-Transfer or PayPal. No paper cheques, no overpayment requests, no gift cards, no crypto. Your technical audit findings and site data are 100% confidential and will never be shared or published.",
+        about_subtitle: "About Me", about_title: "Independent Web Specialist & Digital Auditor", about_bio_1: "I’m a Tiotia:ke (Montréal) based freelance developer, code repair specialist, and content reviewer. I help small local businesses, independent creators, and organizations fix broken websites, clean up code, and ensure their online presence is secure, bilingual, and easy to use.", about_bio_2: "My background spans web application design, frontend debugging (React, Node, HTML/CSS), digital security credential hygiene, and articulate writing. I don't use high-pressure sales tactics or bloated monthly agency contracts — just clear, practical technical work delivered on time.",
+        contact_subtitle: "Get In Touch", contact_title: "Request an Audit or Site Service", contact_desc: "Fill out the request form below. I will reply within a few hours to confirm scope, terms, and payment details. All audits are 100% confidential.", f_name: "Your Name *", f_email: "Email Address *", f_url: "Website URL to Review *", f_service: "Select Desired Service *", f_lang: "Target Audit Language", f_notes: "Project Notes or Specific Issues", f_perm: "I confirm that I own this website/repository or have explicit written permission from the owner to request a technical/security review.", f_btn: "Send Audit Request", succ_t: "Audit Request Received!", succ_d: "Thank you for reaching out. I will review your submitted URL and get back to your email within 2-4 hours with written scope confirmation, confidentiality agreement, and payment details."
+    },
+    FR: {
+        tagline: "Basé à Tiotia:ke (Montréal, QC) · Audit Web & Sécurité",
+        nav_value: "Valeur Juste", nav_services: "Services", nav_mailbox: "Style d'Approche", nav_demo: "Exemple d'Audit", nav_about: "À propos", nav_contact: "Contact", nav_cta: "Demander l'Audit 24h (125 $)",
+        hero_badge: "Basé à Tiotia:ke (Montréal) & Projets à distance", hero_title_1: "Chaleureux & Organiques", hero_title_2: "des solutions tech, à l'image de vos services.", hero_desc: "Réparations full-stack, débogage de menus mobiles, audits de sécurité et révision éditoriale bilingue — au service des créateurs, commerçants locaux et communautés QTBiPOC à Tiotia:ke / Montréal.", hero_btn_primary: "Demander l'Audit à 125 $ CAD", hero_btn_secondary: "Voir un Exemple d'Audit", hero_stat1_title: "24 Heures", hero_stat1_desc: "Délai de Livraison Express", hero_stat1_2_desc: "Prix Fixe à l'Avance", hero_stat1_3_title: "100% Privé", hero_stat1_3_desc: "Confidentialité Stricte", hero_card_flag: "Offre Vedette", hero_card_sub: "Livraison Express 24h", hero_card_title: "Audit Web & Sécurité", hero_card_fixed: "Prix fixe sans surprise", hero_card_body: "Recevez 5 recommandations prioritaires avec captures d'écran, références exactes de lignes de code, vérification de liens brisés, et analyse des clés d'API exposées.", hero_card_item1: "Examen de l'ergonomie mobile & conversion", hero_card_item2: "Vérification de la cohérence bilingue (EN / FR)", hero_card_item3: "Audit de sécurité (Clés API & config exposées)", hero_card_item_confidential: "Rapport 100% confidentiel (Jamais publié)", hero_card_btn1: "Commander l'Audit (125 $ CAD)", hero_card_btn2: "Voir l'Exemple d'Audit",
+        market_subtitle: "Perspective du Marché", market_title: "Dépenses Excessives vs. Valeur Locale Accessible", market_desc: "Les devis d'agences atteignent souvent des sommes astronomiques pour des corrections simples. Voici comment mes tarifs honnêtes gardent votre budget sous contrôle.", m_bubble1_tag: "Devis d'Agence (Forfait)", m_bubble1_title: "Intégration d'Entreprise Complexe", m_bubble1_desc: "Des semaines de réunions, plusieurs gestionnaires de compte, et des rapports PDF gonflés avant même la première ligne de code.", m_bubble2_tag: "Cabinet d'Audit Corporatif", m_bubble2_title: "Rapport Logiciel Automatisé", m_bubble2_desc: "Des scans génériques remplis de jargon technique qui manquent de contexte humain, de nuances bilingues montréalaises, ou de solutions claires.", m_bubble3_tag: "Piège de la Facturation Horaire", m_bubble3_title: "Portée Sur-Ingénierie", m_bubble3_desc: "Facturer des tarifs d'entreprise pour des ajustements CSS mineurs, des corrections de menus, ou des configurations SSL basiques.", sprout_tag: "Racines Communautaires", sprout_sub: "Tarification Locale Équitable • Sans Surplus Corporate", m_khaleb_title: "Direct, Humain & Accessible", m_khaleb_text: "Vous avez un développeur dédié basé à Tiotia:ke (Montréal) qui inspecte votre site ligne par ligne. Pas d'intermédiaires, pas de pièges de forfaits cachés — juste des corrections concrètes livrées en 24 heures.", m_row1_t: "Audit Web Express 24h", m_row1_d: "5 constats prioritaires & hygiène de sécurité", m_row2_t: "Forfait Complet Mobile, Desktop & Performance", m_row2_d: "Refonte responsive propre, sans ralentissement, chargement instantané", m_khaleb_cta: "Choisir un Tarif Local Équitable",
+        services_subtitle: "Ce que je fais", services_title: "Code Full-Stack, Design & Sécurité", services_desc: "Des services freelance honnêtes et axés sur les résultats, conçus pour résoudre de vrais problèmes techniques pour les petites entreprises et les créateurs indépendants.", s1_title: "Audit Web en 24 Heures", s1_price: "125 $ CAD à l'avance", s1_desc: "Rapport confidentiel complet en 5 points couvrant la clarté mobile, la visibilité des appels à l'action, les bases de l'accessibilité, les goulots d'étranglement de vitesse, et les signaux de confiance.", s2_title: "Réparation & Débogage de Site / App", s2_price: "Forfait 295 $ CAD", s2_desc: "Dépannage rapide pour les mises en page brisées, erreurs JavaScript, bogues d'affichage mobile, états React, CSS et vitesse.", s3_title: "Sécurité & Hygiène Numérique", s3_price: "Projets autorisés uniquement", s3_desc: "Audit de vos sites et dépôts dont vous êtes propriétaire pour détecter les clés API exposées, fichiers .env vulnérables et tester SSL/CORS.", s4_title: "Création Web, App & Jeux", s4_price: "Sites uniques & projets complets", s4_desc: "Développement d'applications web modernes en page unique, outils HTML/Tailwind sur mesure, pages d'atterrissage et jeux web interactifs.", s5_title: "Rédaction Bilingue & Critiques", s5_price: "Contenu & Éditorial", s5_desc: "Rédaction naturelle en anglais et français de Montréal, articles de blog, optimisation de textes de vente et critiques musicales d'albums.", s6_title: "Maintenance Technique", s6_price: "Forfait mensuel flexible", s6_desc: "Suivi régulier, mises à jour de sécurité, gestion du nom de domaine et sauvegardes pour garder votre site performant.", service_select: "Sélectionner ce service →",
+        mail_subtitle: "Philosophie de Communication", mail_title: "Spam Générique vs. Approche Humaine Communautaire", mail_desc: "Les PME et artistes locaux reçoivent quotidiennement des messages automatisés. Voici comment mon approche personnelle et transparente respecte votre boîte de réception.", inbox_spam_t: "Boîte de Réception d'Agence (Spam)", inbox_spam_sub: "Prospection Automatisée & Plaintes Clients", inbox_spam_badge: "99 + Spams Non Lus", spam1_subject: "\"URGENT : Référencement #1 garanti pour votre site web !!\"", spam1_body: "Cher Monsieur/Madame, nous avons remarqué que votre site manque de liens. Payez 500 $/mois pour 10 000 liens...", spam2_subject: "Avis : \"Le menu ne s'ouvre pas sur mon téléphone !\"", spam2_body: "\"Téléchargement PDF 15Mo forcé sur mobile ! Heures d'ouverture introuvables !\"", spam_footer_t: "Le Résultat :", spam_footer_d: "Courriels ignorés, visiteurs frustrés, perte de clients et zéro confiance.", inbox_human_t: "Contact Direct par Khaleb", inbox_human_sub: "Humain, Local & Personnalisé", inbox_human_badge: "100% Transparent", human_mail_sub: "\"Petit détail sur votre menu mobile / Small fix for your mobile site\"", human_mail_body: "\"Bonjour ! En visitant votre site sur mon téléphone, j'ai remarqué que le menu s'ouvre sous forme de PDF au lieu d'un affichage mobile fluide. J'offre des audits confidentiels de 24h à 125 $ CAD pour les PME et créateurs de Montréal. Tous les constats restent strictement privés.\"", human_vibe_t: "Soutien aux Créateurs & Communautés QTBiPOC Locales :", human_footer_t: "Valeur à Long Terme :", human_footer_d: "Construire de vraies relations pour faire rayonner votre marque toute l'année.",
+        demo_subtitle: "Preuve de Qualité", demo_title: "Exemple d'Audit Web & Sécurité", demo_disclaimer: "*Exemple basé sur un café fictif de Montréal (Café Étoile du Nord). Aucun partenariat réel.", p_high: "HAUTE PRIORITÉ", p_med: "PRIORITÉ MOYENNE", f1_title: "Constat 1 : Appel à l'action principal flou sur mobile", f2_title: "Constat 2 : Coordonnées difficiles à trouver sur mobile", f3_title: "Constat 3 : Manque d'avis clients & de preuve sociale", f4_title: "Constat 4 : Incohérences dans l'expérience bilingue (EN / FR)", f5_title: "Constat 5 : Clé API & Fichier de Configuration Exposé", demo_banner_title: "Vous voulez un audit similaire pour votre site ?", demo_banner_sub: "Livré en 24h avec des corrections concrètes pour 125 $ CAD. Strictement confidentiel.", demo_banner_btn: "Voir la mise en page PDF complète",
+        proc_subtitle: "Processus Protégé & Confidentiel", proc_title: "Processus de Travail Sécurisé en 5 Étapes", proc_desc: "Un mandat clair, des tarifs fixes, une confidentialité totale et une livraison transparente protègent les deux parties.", step1_t: "Soumission du site", step1_d: "Envoyez l'URL et l'autorisation via le formulaire.", step2_t: "Accord & Portée", step2_d: "Prix fixe (125 $ CAD) et objectifs confirmés par écrit.", step3_t: "Paiement Sécurisé", step3_d: "Paiement reçu via Virement Interac ou PayPal.", step4_t: "Rapport 24h Confidentiel", step4_d: "Réception de votre rapport privé en 5 points et corrections.", step5_t: "Correctifs Optionnels", step5_d: "Implémentation sur devis séparé sans obligation.", fraud_title: "Politique de Protection Anti-Fraude & Confidentialité", fraud_heading: "Aucun Chèque / Paiements Vérifiés / 100% Privé", fraud_text: "Conformément aux directives du Centre antifraude du Canada : Le travail débute strictement après réception du paiement via Virement Interac ou PayPal. Aucun chèque papier, aucun surpaiement, ni crypto. Vos données et vos audits sont 100% confidentiels et ne seront jamais publiés.",
+        about_subtitle: "À propos", about_title: "Spécialiste Web Indépendant & Auditeur Numérique", about_bio_1: "Je suis un développeur indépendant basé à Tiotia:ke (Montréal). J'aide les PME locales et les créateurs à réparer leurs sites web, nettoyer leur code et s'assurer que leur présence en ligne est rapide, bilingue et sécurisée.", about_bio_2: "Mon parcours inclut le développement d'applications web, le débogage frontend (React, Node, HTML/CSS), la sécurité des données et la rédaction. Aucun contrat d'agence gonflé — seulement du travail technique clair et livré à temps.",
+        contact_subtitle: "Contact", contact_title: "Demander un Audit ou un Service Web", contact_desc: "Remplissez le formulaire ci-dessous. Je répondrai en quelques heures pour confirmer les détails et les modalités de paiement. Tous les audits sont 100% confidentiels.", f_name: "Votre nom *", f_email: "Adresse courriel *", f_url: "URL du site à analyser *", f_service: "Service désiré *", f_lang: "Langue ciblée pour l'audit", f_notes: "Notes sur le projet ou problèmes spécifiques", f_perm: "Je confirme être propriétaire de ce site ou posséder l'autorisation écrite du propriétaire pour demander cet audit.", f_btn: "Envoyer la demande", succ_t: "Demande d'audit reçue !", succ_d: "Merci pour votre message. Je vais analyser l'URL soumise et vous contacter par courriel d'ici 2 à 4 heures avec la confirmation de la portée et les instructions de paiement."
+    }
+};
+
+function toggleLanguage() {
+    currentLang = currentLang === 'EN' ? 'FR' : 'EN';
+    document.documentElement.lang = currentLang.toLowerCase();
+    document.getElementById('langLabel').textContent = currentLang === 'EN' ? 'FR 🇨🇦' : 'EN 🇨🇦';
+    const langData = translations[currentLang];
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (langData[key]) {
+            el.textContent = langData[key];
+        }
+    });
+}
+
+body {
+    background-color: #0d0b09;
+    color: #eae0d5;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    overflow-x: hidden;
+}
+h1, h2, h3, .font-display {
+    font-family: 'Syne', sans-serif;
+}
+.sunset-gradient-text {
+    background: linear-gradient(135deg, #fff5ea 0%, #ffd166 35%, #fb8500 75%, #e76f51 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.editorial-italic {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-weight: 600;
+}
+.border-glow {
+    border: 1px solid rgba(251, 133, 0, 0.3);
+    box-shadow: 0 0 40px rgba(251, 133, 0, 0.12);
+}
+.modal-backdrop {
+    background-color: rgba(13, 11, 9, 0.92);
+    backdrop-filter: blur(14px);
+}
+
+@keyframes floatSlow {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-12px) rotate(1.2deg); }
+}
+@keyframes pulseGlow {
+    0%, 100% { opacity: 0.18; transform: scale(1); }
+    50% { opacity: 0.35; transform: scale(1.1); }
+}
+@keyframes flyUpPainfully {
+    0% { transform: translateY(50px) scale(0.96); opacity: 0.2; }
+    50% { transform: translateY(-10px) scale(1.02); opacity: 0.95; }
+    100% { transform: translateY(-70px) scale(0.95) rotate(-3deg); opacity: 0.3; }
+}
+@keyframes priceJarPop {
+    0%, 100% { transform: scale(1); background-color: #1e3a8a; color: #93c5fd; }
+    50% { transform: scale(1.18); background-color: #991b1b; color: #fca5a5; box-shadow: 0 0 20px rgba(239, 68, 68, 0.6); }
+}
+@keyframes sproutGrowth {
+    0% { transform: scale(0.8) translateY(4px); }
+    50% { transform: scale(1.1) translateY(-2px); }
+    100% { transform: scale(1) translateY(0); }
+}
+.animate-float-slow { animation: floatSlow 7s ease-in-out infinite; }
+.animate-pulse-glow { animation: pulseGlow 8s ease-in-out infinite; }
+.animate-fly-money-1 { animation: flyUpPainfully 7s cubic-bezier(0.25, 1, 0.5, 1) infinite alternate; }
+.animate-fly-money-2 { animation: flyUpPainfully 7s cubic-bezier(0.25, 1, 0.5, 1) 2.3s infinite alternate; }
+.animate-fly-money-3 { animation: flyUpPainfully 7s cubic-bezier(0.25, 1, 0.5, 1) 4.6s infinite alternate; }
+.animate-price-jar { animation: priceJarPop 3s ease-in-out infinite; }
+.animate-sprout { animation: sproutGrowth 4s ease-in-out infinite; }
+
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: #0d0b09; }
+::-webkit-scrollbar-thumb { background: #221a15; border-radius: 9999px; }
+::-webkit-scrollbar-thumb:hover { background: #fb8500; }
+
+.status-dot {
+    width: 8px; height: 8px; background-color: #10b981; border-radius: 50%;
+    display: inline-block; box-shadow: 0 0 10px rgba(16, 185, 129, 0.6);
+}
+.status-dot.pulse { animation: pulse-teal 2s infinite ease-in-out; }
+@keyframes pulse-teal {
+    0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); }
+    70% { transform: scale(1.15); box-shadow: 0 0 0 8px rgba(16, 185, 129, 0); }
+    100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+}

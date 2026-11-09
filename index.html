@@ -39,13 +39,41 @@
     <style>
       :root {
         color-scheme: dark;
+        --scroll-light: 0;
+      }
+
+      html {
+        scroll-behavior: smooth;
       }
 
       body {
-        background-color: #0d0b09;
+        background:
+          radial-gradient(circle at 15% -10%, rgba(255, 191, 92, 0.18), transparent 26%),
+          radial-gradient(circle at 80% 0%, rgba(251, 133, 0, 0.14), transparent 28%),
+          linear-gradient(
+            180deg,
+            rgba(13, 11, 9, 1) 0%,
+            rgba(18, 13, 11, 1) 20%,
+            rgba(36, 26, 21, 1) 42%,
+            rgba(84, 68, 57, 1) calc(44% + (var(--scroll-light) * 22%)),
+            rgba(163, 129, 98, 1) calc(66% + (var(--scroll-light) * 18%)),
+            rgba(236, 216, 190, 1) 100%
+          );
         color: #eae0d5;
         font-family: 'Plus Jakarta Sans', sans-serif;
         overflow-x: hidden;
+        transition: background 220ms ease-out;
+      }
+
+      body::before {
+        content: '';
+        position: fixed;
+        inset: 0;
+        pointer-events: none;
+        z-index: -1;
+        background:
+          linear-gradient(135deg, rgba(255,209,102,0.22), transparent 32%, rgba(251,133,0,0.14) 52%, rgba(255,245,234,0.1) 100%);
+        opacity: calc(0.35 + var(--scroll-light) * 0.75);
       }
 
       h1, h2, h3, .font-display {
@@ -232,7 +260,7 @@
                 <a href="#contact" class="rounded-full bg-gradient-to-r from-orange-400 to-amber-300 px-5 py-3 font-semibold text-[#1d1a17] shadow-glow transition hover:scale-[1.02]">
                   Request a 24h Audit
                 </a>
-                <button type="button" onclick="openAuditModal()" class="rounded-full border border-white/10 bg-white/5 px-5 py-3 font-medium text-stone-100 transition hover:border-orange-300/50 hover:text-orange-100">
+                <button type="button" onclick="openAuditModal()" class="rounded-full border border-white/10 bg-white/5 px-5 py-3 font-medium text-stone-100 transition hover:border-orange-300/50">
                   View Sample Audit
                 </button>
               </div>
@@ -343,7 +371,7 @@
               <p class="text-sm uppercase tracking-[0.24em] text-orange-200/80" data-i18n="mail_subtitle">Communication Philosophy</p>
               <h2 class="mt-4 text-4xl font-black text-white" data-i18n="mail_title">Generic Email Spam vs. Authentic Community Vibe</h2>
               <p class="mt-5 text-lg text-stone-300" data-i18n="mail_desc">
-                Small business owners and local artists get spammed daily by automated outreach. This service avoids the script and focuses on a direct, grounded conversation that respects the work and the person behind it.
+                Small business owners and local artists get spammed daily by automated outreach. This service avoids the script and focuses on a direct, grounded conversation that respects the work and the people behind it.
               </p>
             </div>
           </div>
@@ -421,7 +449,7 @@
               <p class="text-sm uppercase tracking-[0.24em] text-orange-200/80" data-i18n="about_subtitle">About Me</p>
               <h2 class="mt-4 text-4xl font-black text-white" data-i18n="about_title">Independent Web Specialist & Digital Auditor</h2>
               <p class="mt-6 text-lg text-stone-300" data-i18n="about_bio_1">
-                I’m a Tiotia:ke (Montréal) based freelance developer, code repair specialist, and digital auditor helping businesses repair messy systems, improve trust, and communicate with clear technical answers.
+                I’m a Tiotia:ke (Montréal) based freelance developer, code repair specialist, and digital auditor helping businesses repair messy systems, improve trust, and communicate with clarity.
               </p>
               <p class="mt-4 text-lg text-stone-300" data-i18n="about_bio_2">
                 Whether the issue is a failing site, a poorly scoped quote, or a vulnerable online presence, the goal is simple: make the work useful, honest, and sustainable.
@@ -451,12 +479,12 @@
               <form id="contactForm" action="https://formspree.io/f/xnqepjyp" method="POST" class="space-y-5">
                 <div>
                   <label for="name" class="mb-2 block text-sm font-medium text-stone-200">Name</label>
-                  <input id="name" name="name" type="text" required class="w-full rounded-xl border border-white/10 bg-[#0d0b09] px-4 py-3 text-white outline-none ring-0 transition focus:border-orange-400" placeholder="Your name" />
+                  <input id="name" name="name" type="text" required class="w-full rounded-xl border border-white/10 bg-[#0d0b09] px-4 py-3 text-white outline-none focus:border-orange-400" placeholder="Your name" />
                 </div>
 
                 <div>
                   <label for="email" class="mb-2 block text-sm font-medium text-stone-200">Email</label>
-                  <input id="email" name="email" type="email" required class="w-full rounded-xl border border-white/10 bg-[#0d0b09] px-4 py-3 text-white outline-none focus:border-orange-400" placeholder="Your email" />
+                  <input id="email" name="email" type="email" required class="w-full rounded-xl border border-white/10 bg-[#0d0b09] px-4 py-3 text-white outline-none focus:border-orange-400" placeholder="you@example.com" />
                 </div>
 
                 <div>
@@ -472,7 +500,7 @@
 
                 <div>
                   <label for="message" class="mb-2 block text-sm font-medium text-stone-200">Project details</label>
-                  <textarea id="message" name="message" rows="5" required class="w-full rounded-xl border border-white/10 bg-[#0d0b09] px-4 py-3 text-white outline-none focus:border-orange-400" placeholder="Tell me what is happening and what you need help with."></textarea>
+                  <textarea id="message" name="message" rows="5" required class="w-full rounded-xl border border-white/10 bg-[#0d0b09] px-4 py-3 text-white outline-none focus:border-orange-400" placeholder="Tell me what needs fixing, what is broken, or what you want to improve."></textarea>
                 </div>
 
                 <button type="submit" class="w-full rounded-full bg-gradient-to-r from-orange-400 to-amber-300 px-5 py-3 font-semibold text-[#1d1a17] shadow-glow transition hover:scale-[1.01]">
@@ -498,7 +526,7 @@
 
     <div id="auditModal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 modal-backdrop">
       <div class="relative w-full max-w-2xl rounded-[2rem] border border-orange-400/20 bg-[#17120f] p-6 shadow-glow">
-        <button type="button" onclick="closeAuditModal()" class="absolute right-4 top-4 rounded-full border border-white/10 px-3 py-1 text-sm text-stone-200 hover:border-orange-400/40 hover:text-orange-200" aria-label="Close modal">✕</button>
+        <button type="button" onclick="closeAuditModal()" class="absolute right-4 top-4 rounded-full border border-white/10 px-3 py-1 text-sm text-stone-200 hover:border-orange-400/40 hover:text-orange-200">✕</button>
 
         <div class="space-y-4">
           <p class="text-sm uppercase tracking-[0.24em] text-orange-200/80">Sample audit</p>
@@ -514,6 +542,16 @@
 
     <script>
       document.getElementById('year').textContent = new Date().getFullYear();
+
+      function setScrollLightness() {
+        const maxScroll = Math.max(1, document.body.scrollHeight - window.innerHeight);
+        const progress = Math.min(1, window.scrollY / maxScroll);
+        document.documentElement.style.setProperty('--scroll-light', progress.toFixed(3));
+      }
+
+      window.addEventListener('scroll', setScrollLightness, { passive: true });
+      window.addEventListener('resize', setScrollLightness);
+      setScrollLightness();
 
       function toggleMobileMenu() {
         const menu = document.getElementById('mobileMenu');
@@ -623,7 +661,7 @@
           services_title: 'Full-Stack Code, Design & Security',
           mail_subtitle: 'Communication Philosophy',
           mail_title: 'Generic Email Spam vs. Authentic Community Vibe',
-          mail_desc: 'Small business owners and local artists get spammed daily by automated outreach. This service avoids the script and focuses on a direct, grounded conversation that respects the work and the person behind it.',
+          mail_desc: 'Small business owners and local artists get spammed daily by automated outreach. This service avoids the script and focuses on a direct, grounded conversation that respects the work and the people behind it.',
           demo_subtitle: 'Proof of Quality',
           demo_title: 'Demonstration Website & Security Audit',
           demo_disclaimer: '*Demonstration report using a fictional Montréal café (North Star Café). No client was harmed in the making of this mockup.',
@@ -631,7 +669,7 @@
           proc_title: '5-Step Scam-Free Working Process',
           about_subtitle: 'About Me',
           about_title: 'Independent Web Specialist & Digital Auditor',
-          about_bio_1: 'I’m a Tiotia:ke (Montréal) based freelance developer, code repair specialist, and digital auditor helping businesses repair messy systems, improve trust, and communicate with clear technical answers.',
+          about_bio_1: 'I’m a Tiotia:ke (Montréal) based freelance developer, code repair specialist, and digital auditor helping businesses repair messy systems, improve trust, and communicate with clarity.',
           about_bio_2: 'Whether the issue is a failing site, a poorly scoped quote, or a vulnerable online presence, the goal is simple: make the work useful, honest, and sustainable.',
           contact_subtitle: 'Get In Touch',
           contact_title: 'Request an Audit or Site Service'
@@ -663,7 +701,7 @@
           proc_title: 'Processus en 5 étapes, sans arnaque',
           about_subtitle: 'À propos',
           about_title: 'Spécialiste web indépendant & auditeur numérique',
-          about_bio_1: 'Je suis un développeur indépendant basé à Tiotia:ke (Montréal), spécialiste des réparations de code et de l’audit numérique pour les entreprises qui veulent une vraie solution.',
+          about_bio_1: 'Je suis un développeur indépendant basé à Tiotia:ke (Montréal), spécialiste des réparations de code et de l’audit numérique pour les entreprises qui veulent une vraie honnêteté.',
           about_bio_2: 'Que ce soit un site bloqué, un devis douteux ou une présence en ligne vulnérable, l’objectif reste le même : faire un travail utile, honnête et durable.',
           contact_subtitle: 'Contact',
           contact_title: 'Demander un audit ou un service web'

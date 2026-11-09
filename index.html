@@ -1,789 +1,696 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
-<head>
+<html lang="en">
+  <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Khaleb George — Web Engineering, Content &amp; Security Audits | Tiotia:ke (Montréal, QC)</title>
-    
+    <meta
+      name="description"
+      content="Tiotia:ke based freelance web specialist and digital auditor helping local businesses fix messy code, improve UX, and secure their online presence."
+    />
+    <title>Tiotia:ke | Web & Security Audit</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,800;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Syne:wght@600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-    
     <script>
-        tailwind.config = {
-            darkMode: 'class',
-            theme: {
-                extend: {
-                    colors: {
-                        paper: { 900: '#0d0b09', 800: '#16120e', 700: '#221a15', 600: '#2f241d' },
-                        sunset: { gold: '#ffd166', amber: '#ffb703', burnt: '#fb8500', terra: '#e76f51', glow: 'rgba(251, 133, 0, 0.25)' },
-                        teal: { verdant: '#10b981', pulse: '#059669', light: '#34d399' }
-                    },
-                    fontFamily: {
-                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
-                        display: ['"Syne"', 'sans-serif'],
-                        serif: ['"Playfair Display"', 'serif'],
-                        mono: ['"JetBrains Mono"', 'monospace'],
-                    }
-                }
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              ink: '#0d0b09',
+              parchment: '#eae0d5',
+              ember: '#fb8500',
+              amberGlow: '#ffd166',
+              rust: '#e76f51',
+              moss: '#10b981',
+              wood: '#221a15',
+              clay: '#a66b3d'
+            },
+            boxShadow: {
+              glow: '0 0 30px rgba(251, 133, 0, 0.18)'
             }
+          }
         }
+      };
     </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Syne:wght@600;700;800&display=swap"
+      rel="stylesheet"
+    />
     <style>
-        body {
-            background-color: #0d0b09;
-            color: #eae0d5;
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            overflow-x: hidden;
+      :root {
+        color-scheme: dark;
+      }
+
+      body {
+        background-color: #0d0b09;
+        color: #eae0d5;
+        font-family: 'Plus Jakarta Sans', sans-serif;
+        overflow-x: hidden;
+      }
+
+      h1, h2, h3, .font-display {
+        font-family: 'Syne', sans-serif;
+      }
+
+      .sunset-gradient-text {
+        background: linear-gradient(135deg, #fff5ea 0%, #ffd166 35%, #fb8500 75%, #e76f51 100%);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+      }
+
+      .editorial-italic {
+        font-family: 'Georgia', serif;
+        font-style: italic;
+        font-weight: 600;
+      }
+
+      .border-glow {
+        border: 1px solid rgba(251, 133, 0, 0.3);
+        box-shadow: 0 0 40px rgba(251, 133, 0, 0.12);
+      }
+
+      .modal-backdrop {
+        background-color: rgba(13, 11, 9, 0.92);
+        backdrop-filter: blur(14px);
+      }
+
+      @keyframes floatSlow {
+        0%, 100% { transform: translateY(0px) rotate(0deg); }
+        50% { transform: translateY(-12px) rotate(1.2deg); }
+      }
+
+      @keyframes pulseGlow {
+        0%, 100% { opacity: 0.18; transform: scale(1); }
+        50% { opacity: 0.35; transform: scale(1.1); }
+      }
+
+      @keyframes flyUpPainfully {
+        0% { transform: translateY(50px) scale(0.96); opacity: 0.2; }
+        50% { transform: translateY(-10px) scale(1.02); opacity: 0.95; }
+        100% { transform: translateY(-70px) scale(0.95) rotate(-3deg); opacity: 0.3; }
+      }
+
+      @keyframes priceJarPop {
+        0%, 100% { transform: scale(1); background-color: #1e3a8a; color: #93c5fd; }
+        50% { transform: scale(1.18); background-color: #991b1b; color: #fca5a5; box-shadow: 0 0 20px rgba(239, 68, 68, 0.6); }
+      }
+
+      @keyframes sproutGrowth {
+        0% { transform: scale(0.8) translateY(4px); }
+        50% { transform: scale(1.1) translateY(-2px); }
+        100% { transform: scale(1) translateY(0); }
+      }
+
+      .animate-float-slow { animation: floatSlow 7s ease-in-out infinite; }
+      .animate-pulse-glow { animation: pulseGlow 8s ease-in-out infinite; }
+      .animate-fly-money-1 { animation: flyUpPainfully 7s cubic-bezier(0.25, 1, 0.5, 1) infinite alternate; }
+      .animate-fly-money-2 { animation: flyUpPainfully 7s cubic-bezier(0.25, 1, 0.5, 1) 2.3s infinite alternate; }
+      .animate-fly-money-3 { animation: flyUpPainfully 7s cubic-bezier(0.25, 1, 0.5, 1) 4.6s infinite alternate; }
+      .animate-price-jar { animation: priceJarPop 3s ease-in-out infinite; }
+      .animate-sprout { animation: sproutGrowth 4s ease-in-out infinite; }
+
+      ::-webkit-scrollbar { width: 8px; }
+      ::-webkit-scrollbar-track { background: #0d0b09; }
+      ::-webkit-scrollbar-thumb { background: #221a15; border-radius: 9999px; }
+      ::-webkit-scrollbar-thumb:hover { background: #fb8500; }
+
+      .status-dot {
+        width: 8px;
+        height: 8px;
+        background-color: #10b981;
+        border-radius: 50%;
+        display: inline-block;
+        box-shadow: 0 0 10px rgba(16, 185, 129, 0.6);
+      }
+
+      .status-dot.pulse { animation: pulse-teal 2s infinite ease-in-out; }
+
+      @keyframes pulse-teal {
+        0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); }
+        70% { transform: scale(1.15); box-shadow: 0 0 0 8px rgba(16, 185, 129, 0); }
+        100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        *, *::before, *::after {
+          animation-duration: 0.01ms !important;
+          animation-iteration-count: 1 !important;
+          transition-duration: 0.01ms !important;
+          scroll-behavior: auto !important;
         }
-        h1, h2, h3, .font-display { font-family: 'Syne', sans-serif; }
-        .sunset-gradient-text {
-            background: linear-gradient(135deg, #fff5ea 0%, #ffd166 35%, #fb8500 75%, #e76f51 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        .editorial-italic { font-family: 'Playfair Display', serif; font-style: italic; font-weight: 600; }
-        .border-glow { border: 1px solid rgba(251, 133, 0, 0.3); box-shadow: 0 0 40px rgba(251, 133, 0, 0.12); }
-        .modal-backdrop { background-color: rgba(13, 11, 9, 0.92); backdrop-filter: blur(14px); }
-        
-        @keyframes floatSlow { 0%, 100% { transform: translateY(0px) rotate(0deg); } 50% { transform: translateY(-12px) rotate(1.2deg); } }
-        @keyframes pulseGlow { 0%, 100% { opacity: 0.18; transform: scale(1); } 50% { opacity: 0.35; transform: scale(1.1); } }
-        @keyframes flyUpPainfully { 0% { transform: translateY(50px) scale(0.96); opacity: 0.2; } 50% { transform: translateY(-10px) scale(1.02); opacity: 0.95; } 100% { transform: translateY(-70px) scale(0.95) rotate(-3deg); opacity: 0.3; } }
-        @keyframes priceJarPop { 0%, 100% { transform: scale(1); background-color: #1e3a8a; color: #93c5fd; } 50% { transform: scale(1.18); background-color: #991b1b; color: #fca5a5; box-shadow: 0 0 20px rgba(239, 68, 68, 0.6); } }
-        @keyframes sproutGrowth { 0% { transform: scale(0.8) translateY(4px); } 50% { transform: scale(1.1) translateY(-2px); } 100% { transform: scale(1) translateY(0); } }
-        
-        .animate-float-slow { animation: floatSlow 7s ease-in-out infinite; }
-        .animate-pulse-glow { animation: pulseGlow 8s ease-in-out infinite; }
-        .animate-fly-money-1 { animation: flyUpPainfully 7s cubic-bezier(0.25, 1, 0.5, 1) infinite alternate; }
-        .animate-fly-money-2 { animation: flyUpPainfully 7s cubic-bezier(0.25, 1, 0.5, 1) 2.3s infinite alternate; }
-        .animate-fly-money-3 { animation: flyUpPainfully 7s cubic-bezier(0.25, 1, 0.5, 1) 4.6s infinite alternate; }
-        .animate-price-jar { animation: priceJarPop 3s ease-in-out infinite; }
-        .animate-sprout { animation: sproutGrowth 4s ease-in-out infinite; }
-        
-        ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: #0d0b09; }
-        ::-webkit-scrollbar-thumb { background: #221a15; border-radius: 9999px; }
-        ::-webkit-scrollbar-thumb:hover { background: #fb8500; }
-        
-        .status-dot { width: 8px; height: 8px; background-color: #10b981; border-radius: 50%; display: inline-block; box-shadow: 0 0 10px rgba(16, 185, 129, 0.6); }
-        .status-dot.pulse { animation: pulse-teal 2s infinite ease-in-out; }
-        @keyframes pulse-teal {
-            0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); }
-            70% { transform: scale(1.15); box-shadow: 0 0 0 8px rgba(16, 185, 129, 0); }
-            100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
-        }
+      }
     </style>
-</head>
-<body class="min-h-screen flex flex-col justify-between selection:bg-sunset-burnt selection:text-white">
+  </head>
+  <body class="bg-ink text-parchment antialiased">
+    <div class="relative overflow-hidden">
+      <div class="absolute inset-0 -z-10">
+        <div class="animate-pulse-glow absolute left-8 top-24 h-64 w-64 rounded-full bg-orange-500/10 blur-3xl"></div>
+        <div class="animate-pulse-glow absolute right-12 top-32 h-80 w-80 rounded-full bg-yellow-500/10 blur-3xl" style="animation-delay: 1s;"></div>
+      </div>
 
-    <header class="sticky top-0 z-40 bg-paper-900/85 backdrop-blur-xl border-b border-white/5 transition-all duration-300">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
-            <div class="flex items-center space-x-3">
-                <a href="#hero" class="group flex items-center space-x-3">
-                    <div class="w-10 h-10 rounded-xl bg-sunset-burnt/15 border border-sunset-amber/40 flex items-center justify-center font-mono font-bold text-sunset-gold group-hover:bg-sunset-burnt group-hover:text-white transition-all duration-300 shadow-lg shadow-sunset-burnt/10">KG</div>
-                    <div class="flex flex-col">
-                        <span class="font-display font-bold text-lg tracking-tight text-white group-hover:text-sunset-gold transition-colors">Khaleb George</span>
-                        <span class="text-xs text-slate-400 flex items-center gap-1.5 font-mono">
-                            <span class="status-dot pulse"></span>
-                            <span data-i18n="tagline">Tiotia:ke (Montréal, QC) based · Web &amp; Security Audit</span>
-                        </span>
-                    </div>
+      <header class="sticky top-0 z-40 border-b border-white/10 bg-[#0d0b09]/80 backdrop-blur-md">
+        <nav class="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
+          <div class="flex items-center gap-3">
+            <div class="flex h-10 w-10 items-center justify-center rounded-full border border-orange-400/50 bg-orange-500/10 text-sm font-semibold text-orange-200">TK</div>
+            <div>
+              <p class="text-sm uppercase tracking-[0.25em] text-orange-200/80">Tiotia:ke</p>
+            </div>
+          </div>
+
+          <div class="hidden items-center gap-8 md:flex">
+            <a href="#value" class="text-sm text-stone-200 hover:text-orange-200" data-i18n="nav_value">Fair Value</a>
+            <a href="#services" class="text-sm text-stone-200 hover:text-orange-200" data-i18n="nav_services">Services</a>
+            <a href="#mailbox" class="text-sm text-stone-200 hover:text-orange-200" data-i18n="nav_mailbox">Outreach Vibe</a>
+            <a href="#demo" class="text-sm text-stone-200 hover:text-orange-200" data-i18n="nav_demo">Sample Audit</a>
+            <a href="#about" class="text-sm text-stone-200 hover:text-orange-200" data-i18n="nav_about">About</a>
+            <a href="#contact" class="text-sm text-stone-200 hover:text-orange-200" data-i18n="nav_contact">Contact</a>
+          </div>
+
+          <div class="flex items-center gap-3">
+            <button
+              id="langToggle"
+              type="button"
+              class="rounded-full border border-white/10 bg-white/5 px-3 py-2 text-xs font-medium text-stone-200 transition hover:border-orange-400/40 hover:text-orange-200"
+              onclick="toggleLanguage()"
+              aria-label="Switch language"
+            >
+              <span id="langLabel">FR 🇨🇦</span>
+            </button>
+
+            <button
+              id="mobileMenuButton"
+              type="button"
+              class="inline-flex items-center rounded-full border border-orange-400/40 bg-orange-500/10 px-3 py-2 text-sm text-orange-100 md:hidden"
+              aria-expanded="false"
+              aria-controls="mobileMenu"
+              onclick="toggleMobileMenu()"
+            >
+              Menu
+            </button>
+
+            <a
+              href="#contact"
+              class="hidden rounded-full bg-gradient-to-r from-orange-400 to-amber-300 px-4 py-2 text-sm font-semibold text-[#1d1a17] shadow-glow md:inline-flex"
+              data-i18n="nav_cta"
+            >
+              Request 24h Audit ($125)
+            </a>
+          </div>
+        </nav>
+
+        <div id="mobileMenu" class="hidden border-t border-white/10 md:hidden">
+          <div class="mx-auto flex max-w-7xl flex-col gap-4 px-4 py-4 text-sm">
+            <a href="#value" class="text-stone-200">Fair Value</a>
+            <a href="#services" class="text-stone-200">Services</a>
+            <a href="#mailbox" class="text-stone-200">Outreach Vibe</a>
+            <a href="#demo" class="text-stone-200">Sample Audit</a>
+            <a href="#about" class="text-stone-200">About</a>
+            <a href="#contact" class="text-stone-200">Contact</a>
+          </div>
+        </div>
+      </header>
+
+      <main>
+        <section class="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8 lg:py-20">
+          <div class="grid items-center gap-10 lg:grid-cols-[1.15fr_0.85fr]">
+            <div>
+              <div class="inline-flex items-center gap-2 rounded-full border border-orange-400/20 bg-orange-500/10 px-3 py-1.5 text-xs font-medium text-orange-100" data-i18n="hero_badge">
+                Tiotia:ke (Montréal) based & Remote Projects
+              </div>
+
+              <h1 class="mt-6 text-5xl font-black leading-none tracking-tight text-white sm:text-6xl lg:text-7xl">
+                <span class="block" data-i18n="hero_title_1">Warm & Organic</span>
+                <span class="block sunset-gradient-text" data-i18n="hero_title_2">tech solutions, just like your services.</span>
+              </h1>
+
+              <p class="mt-6 max-w-xl text-lg text-stone-300" data-i18n="hero_desc">
+                Full-stack repairs, mobile polish, and clean security improvements designed for local businesses, artists, and service owners who need honesty over hype.
+              </p>
+
+              <div class="mt-8 flex flex-wrap items-center gap-4">
+                <a href="#contact" class="rounded-full bg-gradient-to-r from-orange-400 to-amber-300 px-5 py-3 font-semibold text-[#1d1a17] shadow-glow transition hover:scale-[1.02]">
+                  Request a 24h Audit
                 </a>
-            </div>
-            <nav class="hidden md:flex items-center space-x-7 text-sm font-medium text-slate-300">
-                <a href="#market-comparison" class="hover:text-sunset-gold transition-colors" data-i18n="nav_value">Fair Value</a>
-                <a href="#services" class="hover:text-sunset-gold transition-colors" data-i18n="nav_services">Services</a>
-                <a href="#mailbox-experience" class="hover:text-sunset-gold transition-colors" data-i18n="nav_mailbox">Outreach Vibe</a>
-                <a href="#audit-demo" class="hover:text-sunset-gold transition-colors" data-i18n="nav_demo">Sample Audit</a>
-                <a href="#about" class="hover:text-sunset-gold transition-colors" data-i18n="nav_about">About</a>
-                <a href="#contact" class="hover:text-sunset-gold transition-colors" data-i18n="nav_contact">Contact</a>
-            </nav>
-            <div class="flex items-center space-x-3">
-                <button id="langToggleBtn" onclick="toggleLanguage()" class="px-3 py-1.5 rounded-lg border border-white/10 bg-paper-800 text-xs font-mono font-medium text-slate-300 hover:border-sunset-burnt/50 transition-all shadow-sm">
-                    <span id="langLabel">FR 🇨🇦</span>
+                <button type="button" onclick="openAuditModal()" class="rounded-full border border-white/10 bg-white/5 px-5 py-3 font-medium text-stone-100 transition hover:border-orange-300/50 hover:text-orange-100">
+                  View Sample Audit
                 </button>
-                <a href="#contact" onclick="selectService('audit-125')" class="hidden sm:inline-flex items-center justify-center px-4 py-2.5 rounded-xl bg-gradient-to-r from-sunset-amber to-sunset-burnt hover:from-sunset-gold hover:to-sunset-burnt text-slate-950 font-bold text-sm shadow-xl shadow-sunset-burnt/25 hover:shadow-sunset-burnt/45 transition-all duration-300 transform hover:-translate-y-0.5" data-i18n="nav_cta">Request 24h Audit ($125)</a>
-                <button id="mobileMenuBtn" onclick="toggleMobileMenu()" class="md:hidden p-2.5 rounded-xl bg-paper-800 text-slate-300 hover:text-white focus:outline-none">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path id="menuIcon" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
-                </button>
-            </div>
-        </div>
-        <div id="mobileMenu" class="hidden md:hidden bg-paper-800/95 backdrop-blur-lg border-b border-white/10 px-6 pt-3 pb-6 space-y-3 font-medium">
-            <a href="#market-comparison" onclick="toggleMobileMenu()" class="block text-slate-300 hover:text-sunset-gold py-2" data-i18n="nav_value">Fair Value</a>
-            <a href="#services" onclick="toggleMobileMenu()" class="block text-slate-300 hover:text-sunset-gold py-2" data-i18n="nav_services">Services</a>
-            <a href="#mailbox-experience" onclick="toggleMobileMenu()" class="block text-slate-300 hover:text-sunset-gold py-2" data-i18n="nav_mailbox">Outreach Vibe</a>
-            <a href="#audit-demo" onclick="toggleMobileMenu()" class="block text-slate-300 hover:text-sunset-gold py-2" data-i18n="nav_demo">Sample Audit</a>
-            <a href="#about" onclick="toggleMobileMenu()" class="block text-slate-300 hover:text-sunset-gold py-2" data-i18n="nav_about">About</a>
-            <a href="#contact" onclick="toggleMobileMenu()" class="block text-slate-300 hover:text-sunset-gold py-2" data-i18n="nav_contact">Contact</a>
-            <a href="#contact" onclick="toggleMobileMenu(); selectService('audit-125')" class="block text-center w-full py-3 rounded-xl bg-sunset-burnt text-white font-bold" data-i18n="nav_cta">Request 24h Audit ($125 CAD)</a>
-        </div>
-    </header>
+              </div>
 
-    <section id="hero" class="relative pt-12 pb-24 md:pt-24 md:pb-36 overflow-hidden">
-        <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[750px] h-[400px] bg-gradient-to-r from-sunset-amber/20 via-sunset-burnt/15 to-sunset-terra/10 blur-[150px] rounded-full pointer-events-none animate-pulse-glow"></div>
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div class="grid lg:grid-cols-12 gap-12 items-center">
-                <div class="lg:col-span-7 space-y-7">
-                    <div class="availability-badge inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-paper-800/90 border border-sunset-amber/30 text-xs font-mono text-sunset-gold backdrop-blur-md shadow-inner">
-                        <span class="status-dot pulse"></span>
-                        <span data-i18n="hero_badge">Tiotia:ke (Montréal) based &amp; Remote Projects</span>
-                    </div>
-                    <h1 class="hero-title text-4xl sm:text-5xl lg:text-6xl font-display font-extrabold tracking-tight text-white leading-[1.08]">
-                        <span class="text-gradient editorial-italic sunset-gradient-text text-5xl sm:text-6xl lg:text-7xl font-normal" data-i18n="hero_title_1">Warm &amp; Organic</span> 
-                        <span data-i18n="hero_title_2">tech solutions, just like your services.</span>
-                    </h1>
-                    <p class="text-base sm:text-lg text-slate-300 leading-relaxed max-w-2xl font-light" data-i18n="hero_desc">Full-stack repairs, mobile menu &amp; layout debugging, security credential audits, and bilingual editorial reviews — supporting local vendors, artists &amp; QTBiPOC creative communities in Tiotia:ke / Montréal.</p>
-                    <div class="pt-2 flex flex-wrap gap-4 items-center">
-                        <a href="#contact" onclick="selectService('audit-125')" class="px-7 py-4 rounded-xl bg-gradient-to-r from-sunset-amber via-sunset-burnt to-sunset-terra text-slate-950 font-bold text-base shadow-xl shadow-sunset-burnt/30 hover:shadow-sunset-burnt/50 transition-all transform hover:-translate-y-1" data-i18n="hero_btn_primary">Request $125 CAD Audit</a>
-                        <button onclick="openAuditModal()" class="px-7 py-4 rounded-xl bg-paper-800/90 hover:bg-paper-700 border border-white/10 text-slate-200 font-semibold text-base transition-all hover:border-sunset-burnt/40 backdrop-blur-md" data-i18n="hero_btn_secondary">View Demonstration Audit</button>
-                    </div>
-                    <div class="pt-6 grid grid-cols-3 gap-4 border-t border-white/10 text-xs text-slate-400 font-mono">
-                        <div><div class="text-white font-bold text-sm font-display" data-i18n="hero_stat1_title">24 Hours</div><div data-i18n="hero_stat1_desc">Express Turnaround</div></div>
-                        <div><div class="text-white font-bold text-sm font-display"><span class="price-tag">$125 CAD</span></div><div data-i18n="hero_stat1_2_desc">Fixed Upfront Price</div></div>
-                        <div><div class="text-white font-bold text-sm font-display" data-i18n="hero_stat1_3_title">100% Private</div><div data-i18n="hero_stat1_3_desc">Strict Confidentiality</div></div>
-                    </div>
+              <div class="mt-8 flex items-center gap-6 text-sm text-stone-300">
+                <div class="flex items-center gap-2">
+                  <span class="status-dot pulse"></span>
+                  <span>Available for new project work</span>
                 </div>
-                <div class="lg:col-span-5 animate-float-slow">
-                    <div class="bg-paper-800/90 backdrop-blur-xl rounded-3xl p-7 md:p-8 border-glow relative overflow-hidden shadow-2xl">
-                        <div class="absolute top-0 right-0 bg-gradient-to-l from-sunset-burnt to-sunset-amber text-slate-950 text-[10px] font-mono uppercase font-bold tracking-widest px-4 py-1.5 rounded-bl-2xl" data-i18n="hero_card_flag">Flagship Offer</div>
-                        <div class="text-xs font-mono text-sunset-gold uppercase tracking-wider mb-2 font-semibold" data-i18n="hero_card_sub">24-Hour Express Turnaround</div>
-                        <h3 class="text-2xl font-display font-bold text-white mb-3" data-i18n="hero_card_title">Website &amp; Security Audit</h3>
-                        <div class="flex items-baseline space-x-2 mb-4">
-                            <span class="price-tag text-4xl font-extrabold text-white font-display">$125 CAD</span>
-                            <span class="text-slate-400 text-xs font-mono" data-i18n="hero_card_fixed">Fixed upfront price</span>
-                        </div>
-                        <p class="text-sm text-slate-300 mb-6 leading-relaxed font-light" data-i18n="hero_card_body">Receive 5 prioritized actionable findings with screenshots, exact line references, broken link/accessibility checks, exposed credential hygiene check, and clear fixes.</p>
-                        <ul class="space-y-3 text-xs text-slate-300 font-mono mb-6">
-                            <li class="flex items-start"><span class="text-teal-verdant mr-2 font-bold">✓</span><span data-i18n="hero_card_item1">Mobile layout &amp; menu conversion review</span></li>
-                            <li class="flex items-start"><span class="text-teal-verdant mr-2 font-bold">✓</span><span data-i18n="hero_card_item2">Bilingual consistency check (EN / FR)</span></li>
-                            <li class="flex items-start"><span class="text-teal-verdant mr-2 font-bold">✓</span><span data-i18n="hero_card_item3">Security hygiene (Exposed API key/config check)</span></li>
-                            <li class="flex items-start"><span class="text-sunset-gold mr-2 font-bold">🔒</span><span data-i18n="hero_card_item_confidential">100% Confidential report (Never published)</span></li>
-                        </ul>
-                        <div class="space-y-3">
-                            <a href="#contact" onclick="selectService('audit-125')" class="block w-full py-3.5 text-center rounded-xl bg-gradient-to-r from-sunset-amber to-sunset-burnt hover:from-sunset-gold hover:to-sunset-burnt text-slate-950 font-bold text-sm transition-all shadow-lg shadow-sunset-burnt/20" data-i18n="hero_card_btn1">Request $125 CAD Audit</a>
-                            <button onclick="openAuditModal()" class="block w-full py-3 text-center rounded-xl bg-paper-700/80 hover:bg-paper-600 text-slate-300 font-semibold text-xs transition-all" data-i18n="hero_card_btn2">Preview Sample Audit Report</button>
-                        </div>
-                    </div>
-                </div>
+              </div>
             </div>
-        </div>
-    </section>
 
-    <section id="market-comparison" class="py-24 bg-paper-900 border-t border-white/5 relative overflow-hidden">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
-                <h2 class="text-xs font-mono text-sunset-gold uppercase tracking-widest font-semibold" data-i18n="market_subtitle">Fair Market Perspective</h2>
-                <h3 class="text-3xl sm:text-4xl font-display font-extrabold text-white" data-i18n="market_title">Money Painfully Spent vs. Grounded Local Value</h3>
-                <p class="text-slate-400 text-base font-light" data-i18n="market_desc">High-end digital agency quotes often fly into astronomical price ranges for <span class="editorial-italic text-white">simple fixes</span>. Here is how my honest, independent rates keep your budget grounded.</p>
-            </div>
-            <div class="grid lg:grid-cols-12 gap-8 items-center">
-                <div class="lg:col-span-6 space-y-5 relative min-h-[420px] flex flex-col justify-center">
-                    <div class="absolute inset-0 bg-red-950/10 rounded-3xl blur-2xl pointer-events-none"></div>
-                    <div class="bg-white text-slate-950 p-5 rounded-2xl shadow-2xl border-2 border-red-500/40 animate-fly-money-1 relative overflow-hidden">
-                        <div class="flex items-center justify-between">
-                            <span class="text-[11px] font-mono text-red-700 font-bold uppercase tracking-wider" data-i18n="m_bubble1_tag">Agency Retainer Quote</span>
-                            <span class="text-xs font-mono font-bold px-3 py-1 rounded-full animate-price-jar">💸 $4,500 - $8,000+ CAD</span>
-                        </div>
-                        <div class="text-base font-display font-bold text-slate-900 mt-2" data-i18n="m_bubble1_title">Complex Corporate Onboarding</div>
-                        <p class="text-xs text-slate-600 font-normal mt-1 leading-relaxed" data-i18n="m_bubble1_desc">3-week discovery calls, multiple account managers, and bloated PDF reports before a single line of code is fixed.</p>
+            <div class="relative">
+              <div class="border-glow relative overflow-hidden rounded-[2rem] bg-[#17120f] p-6 shadow-glow">
+                <div class="absolute inset-0 bg-gradient-to-br from-orange-500/10 via-transparent to-amber-300/5"></div>
+                <div class="relative">
+                  <div class="mb-6 flex items-center justify-between">
+                    <div>
+                      <p class="text-xs uppercase tracking-[0.2em] text-stone-400">Audit Snapshot</p>
+                      <h2 class="mt-2 text-2xl font-black text-white">Scam-Free</h2>
                     </div>
-                    <div class="bg-white text-slate-950 p-5 rounded-2xl shadow-2xl border-2 border-amber-500/40 animate-fly-money-2 relative overflow-hidden">
-                        <div class="flex items-center justify-between">
-                            <span class="text-[11px] font-mono text-amber-700 font-bold uppercase tracking-wider" data-i18n="m_bubble2_tag">Corporate Audit Firm</span>
-                            <span class="text-xs font-mono font-bold px-3 py-1 rounded-full animate-price-jar">💸 $1,500 - $3,200 CAD</span>
-                        </div>
-                        <div class="text-base font-display font-bold text-slate-900 mt-2" data-i18n="m_bubble2_title">Automated Software Dump</div>
-                        <p class="text-xs text-slate-600 font-normal mt-1 leading-relaxed" data-i18n="m_bubble2_desc">Generic software scans filled with tech buzzwords that lack human context, local Montréal bilingual nuance, or clear solutions.</p>
-                    </div>
-                    <div class="bg-white text-slate-950 p-5 rounded-2xl shadow-2xl border-2 border-red-500/40 animate-fly-money-3 relative overflow-hidden">
-                        <div class="flex items-center justify-between">
-                            <span class="text-[11px] font-mono text-red-700 font-bold uppercase tracking-wider" data-i18n="m_bubble3_tag">Hourly Markup Trap</span>
-                            <span class="text-xs font-mono font-bold px-3 py-1 rounded-full animate-price-jar">💸 $180 - $250 / hour</span>
-                        </div>
-                        <div class="text-base font-display font-bold text-slate-900 mt-2" data-i18n="m_bubble3_title">Over-Engineered Scope</div>
-                        <p class="text-xs text-slate-600 font-normal mt-1 leading-relaxed" data-i18n="m_bubble3_desc">Charging enterprise hours for minor CSS adjustments, menu fixes, or basic SSL certificate configurations.</p>
-                    </div>
-                </div>
-                <div class="lg:col-span-6">
-                    <div class="bg-paper-800/95 border-glow p-8 md:p-10 rounded-3xl relative overflow-hidden shadow-2xl space-y-6">
-                        <div class="flex items-center gap-3">
-                            <div class="relative w-12 h-12 rounded-full bg-paper-900 border border-white/10 flex items-center justify-center overflow-hidden animate-sprout">
-                                <div class="absolute bottom-0 w-full h-4 bg-[#3d271d]"></div>
-                                <svg class="w-7 h-7 relative z-10 text-teal-verdant" fill="currentColor" viewBox="0 0 24 24"><path d="M12 22v-9c0-3.3 2.7-6 6-6h1c.6 0 1 .4 1 1s-.4 1-1 1h-1c-2.2 0-4 1.8-4 4v9h-2zm-2 0v-7c0-2.2-1.8-4-4-4H5c-.6 0-1-.4-1-1s.4-1 1-1h1c3.3 0 6 2.7 6 6v7h-2z"/></svg>
-                            </div>
-                            <div>
-                                <span class="text-xs font-mono text-teal-verdant font-bold uppercase tracking-wider" data-i18n="sprout_tag">Grounded Community Roots</span>
-                                <div class="text-sm font-display font-bold text-white" data-i18n="sprout_sub">Fair Local Pricing • No Corporate Bloat</div>
-                            </div>
-                        </div>
-                        <h4 class="text-3xl font-display font-bold text-white" data-i18n="m_khaleb_title">Direct, Human &amp; Accessible</h4>
-                        <p class="text-sm text-slate-300 leading-relaxed font-light" data-i18n="m_khaleb_text">You get a dedicated developer based in Tiotia:ke (Montréal) who inspects your site line-by-line. No account managers, no hidden retainer traps — just actionable fixes delivered within 24 hours.</p>
-                        <div class="space-y-4 pt-2">
-                            <div class="flex items-center justify-between p-4 rounded-xl bg-paper-900 border border-white/5">
-                                <div><div class="font-display font-bold text-white text-base" data-i18n="m_row1_t">24h Express Website Audit</div><div class="text-xs text-slate-400 font-mono" data-i18n="m_row1_d">5 prioritized findings &amp; security hygiene</div></div>
-                                <div class="font-display font-bold text-sunset-gold text-xl"><span class="price-tag">$125 CAD</span></div>
-                            </div>
-                            <div class="flex items-center justify-between p-4 rounded-xl bg-paper-900 border border-white/5">
-                                <div><div class="font-display font-bold text-white text-base" data-i18n="m_row2_t">Full Mobile, Desktop &amp; Performance Package</div><div class="text-xs text-slate-400 font-mono" data-i18n="m_row2_d">Clean responsive rebuild, zero jank, instant loading</div></div>
-                                <div class="font-display font-bold text-teal-verdant text-lg">$295 CAD</div>
-                            </div>
-                        </div>
-                        <a href="#contact" onclick="selectService('audit-125')" class="block w-full py-3.5 text-center rounded-xl bg-gradient-to-r from-sunset-amber via-sunset-burnt to-sunset-terra text-slate-950 font-bold text-sm shadow-lg shadow-sunset-burnt/25 hover:shadow-sunset-burnt/45 transition-all"><span data-i18n="m_khaleb_cta">Choose Fair Local Pricing</span></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+                    <span class="rounded-full border border-emerald-500/40 bg-emerald-500/10 px-2 py-1 text-xs text-emerald-300">Live</span>
+                  </div>
 
-    <section id="services" class="py-24 bg-paper-800/60 border-t border-white/5 relative">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
-                <h2 class="text-xs font-mono text-sunset-gold uppercase tracking-widest font-semibold" data-i18n="services_subtitle">What I Do</h2>
-                <h3 class="text-3xl sm:text-4xl font-display font-extrabold text-white" data-i18n="services_title">Full-Stack Code, Design &amp; Security</h3>
-                <p class="text-slate-400 text-base font-light" data-i18n="services_desc">Honest, outcome-focused freelance services designed to fix real technical problems for small businesses and independent creators.</p>
+                  <div class="space-y-4">
+                    <div class="rounded-2xl border border-white/10 bg-white/5 p-4">
+                      <p class="text-xs uppercase tracking-[0.2em] text-stone-400">Problem</p>
+                      <p class="mt-2 text-lg font-medium text-stone-100">Agency quote ballooned +300%</p>
+                    </div>
+                    <div class="rounded-2xl border border-white/10 bg-white/5 p-4">
+                      <p class="text-xs uppercase tracking-[0.2em] text-stone-400">Fix</p>
+                      <p class="mt-2 text-lg font-medium text-stone-100">Fixed scope, transparent pricing, no fluff</p>
+                    </div>
+                    <div class="rounded-2xl border border-white/10 bg-white/5 p-4">
+                      <p class="text-xs uppercase tracking-[0.2em] text-stone-400">Outcome</p>
+                      <p class="mt-2 text-lg font-medium text-stone-100">Faster site, safer stack, clearer process</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                <div class="bg-paper-900/90 border border-white/10 p-7 rounded-2xl hover:border-sunset-burnt/50 transition-all flex flex-col justify-between space-y-4">
-                    <div class="space-y-3">
-                        <div class="text-sunset-gold font-mono text-xs uppercase font-bold" data-i18n="s1_price">$125 CAD Upfront</div>
-                        <h4 class="text-xl font-display font-bold text-white" data-i18n="s1_title">24-Hour Website Audit</h4>
-                        <p class="text-xs text-slate-300 leading-relaxed font-light" data-i18n="s1_desc">Comprehensive 5-point confidential report covering mobile clarity, call-to-action visibility, accessibility basics, page speed bottlenecks, and user trust signals.</p>
-                    </div>
-                    <a href="#contact" onclick="selectService('audit-125')" class="text-xs font-mono font-bold text-sunset-amber hover:text-sunset-gold transition-colors inline-flex items-center gap-1" data-i18n="service_select">Select this service →</a>
-                </div>
-                <div class="bg-paper-900/90 border border-white/10 p-7 rounded-2xl hover:border-sunset-burnt/50 transition-all flex flex-col justify-between space-y-4">
-                    <div class="space-y-3">
-                        <div class="text-teal-verdant font-mono text-xs uppercase font-bold" data-i18n="s2_price">$295 CAD Package</div>
-                        <h4 class="text-xl font-display font-bold text-white" data-i18n="s2_title">Site &amp; App Repair / Debugging</h4>
-                        <p class="text-xs text-slate-300 leading-relaxed font-light" data-i18n="s2_desc">Fast troubleshooting for broken layouts, Javascript errors, mobile viewport bugs, React state issues, CSS fixes, and performance bottlenecks.</p>
-                    </div>
-                    <a href="#contact" onclick="selectService('repair-295')" class="text-xs font-mono font-bold text-sunset-amber hover:text-sunset-gold transition-colors inline-flex items-center gap-1" data-i18n="service_select">Select this service →</a>
-                </div>
-                <div class="bg-paper-900/90 border border-white/10 p-7 rounded-2xl hover:border-sunset-burnt/50 transition-all flex flex-col justify-between space-y-4">
-                    <div class="space-y-3">
-                        <div class="text-sunset-gold font-mono text-xs uppercase font-bold" data-i18n="s3_price">Authorized reviews only</div>
-                        <h4 class="text-xl font-display font-bold text-white" data-i18n="s3_title">Security &amp; Credential Hygiene</h4>
-                        <p class="text-xs text-slate-300 leading-relaxed font-light" data-i18n="s3_desc">Audit sites or web repositories you own for accidentally exposed API keys, unsafe environment files (.env), missing SSL/CORS headers, and basic pentesting.</p>
-                    </div>
-                    <a href="#contact" onclick="selectService('security')" class="text-xs font-mono font-bold text-sunset-amber hover:text-sunset-gold transition-colors inline-flex items-center gap-1" data-i18n="service_select">Select this service →</a>
-                </div>
-                <div class="bg-paper-900/90 border border-white/10 p-7 rounded-2xl hover:border-sunset-burnt/50 transition-all flex flex-col justify-between space-y-4">
-                    <div class="space-y-3">
-                        <div class="text-sunset-gold font-mono text-xs uppercase font-bold" data-i18n="s4_price">Single-page &amp; full builds</div>
-                        <h4 class="text-xl font-display font-bold text-white" data-i18n="s4_title">Web, App &amp; Game Build</h4>
-                        <p class="text-xs text-slate-300 leading-relaxed font-light" data-i18n="s4_desc">Building lightweight, high-speed modern single-page applications, custom HTML/Tailwind web tools, landing pages, and interactive web games.</p>
-                    </div>
-                    <a href="#contact" onclick="selectService('development')" class="text-xs font-mono font-bold text-sunset-amber hover:text-sunset-gold transition-colors inline-flex items-center gap-1" data-i18n="service_select">Select this service →</a>
-                </div>
-                <div class="bg-paper-900/90 border border-white/10 p-7 rounded-2xl hover:border-sunset-burnt/50 transition-all flex flex-col justify-between space-y-4">
-                    <div class="space-y-3">
-                        <div class="text-sunset-gold font-mono text-xs uppercase font-bold" data-i18n="s5_price">Content &amp; Editorial</div>
-                        <h4 class="text-xl font-display font-bold text-white" data-i18n="s5_title">Bilingual Copy &amp; Music Reviews</h4>
-                        <p class="text-xs text-slate-300 leading-relaxed font-light" data-i18n="s5_desc">Human-sounding English &amp; Montréal-French rewriting, blog posts, sales copy refinement, and articulate music/album reviews for independent artists.</p>
-                    </div>
-                    <a href="#contact" onclick="selectService('retainer')" class="text-xs font-mono font-bold text-sunset-amber hover:text-sunset-gold transition-colors inline-flex items-center gap-1" data-i18n="service_select">Select this service →</a>
-                </div>
-                <div class="bg-paper-900/90 border border-white/10 p-7 rounded-2xl hover:border-sunset-burnt/50 transition-all flex flex-col justify-between space-y-4">
-                    <div class="space-y-3">
-                        <div class="text-sunset-gold font-mono text-xs uppercase font-bold" data-i18n="s6_price">Flexible Retainer</div>
-                        <h4 class="text-xl font-display font-bold text-white" data-i18n="s6_title">Technical Maintenance</h4>
-                        <p class="text-xs text-slate-300 leading-relaxed font-light" data-i18n="s6_desc">Monthly ongoing checkups, security updates, domain management, backups, and site updates so your online presence never falls behind.</p>
-                    </div>
-                    <a href="#contact" onclick="selectService('retainer')" class="text-xs font-mono font-bold text-sunset-amber hover:text-sunset-gold transition-colors inline-flex items-center gap-1" data-i18n="service_select">Select this service →</a>
-                </div>
-            </div>
-        </div>
-    </section>
+          </div>
+        </section>
 
-    <section id="mailbox-experience" class="py-24 bg-paper-800 border-t border-white/5 relative">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
-                <h2 class="text-xs font-mono text-sunset-gold uppercase tracking-widest font-semibold" data-i18n="mail_subtitle">Communication Philosophy</h2>
-                <h3 class="text-3xl sm:text-4xl font-display font-extrabold text-white" data-i18n="mail_title">Generic Email Spam vs. Authentic Community Vibe</h3>
-                <p class="text-slate-400 text-base font-light" data-i18n="mail_desc">Small business owners and local artists get spammed daily by automated bots. Here is how my personal, transparent approach respects your inbox and builds long-term trust.</p>
-            </div>
-            <div class="grid lg:grid-cols-12 gap-8 items-stretch">
-                <div class="lg:col-span-6 bg-paper-900/90 rounded-3xl border border-red-500/20 p-6 md:p-8 flex flex-col justify-between shadow-2xl relative overflow-hidden">
-                    <div class="space-y-4">
-                        <div class="flex items-center justify-between border-b border-white/10 pb-4">
-                            <div class="flex items-center space-x-3">
-                                <div class="w-8 h-8 rounded-lg bg-red-500/20 text-red-400 flex items-center justify-center font-mono font-bold text-sm">📫</div>
-                                <div>
-                                    <div class="font-display font-bold text-white text-sm" data-i18n="inbox_spam_t">Generic Inbox Spam</div>
-                                    <div class="text-[11px] font-mono text-slate-500" data-i18n="inbox_spam_sub">Automated Bot Pitches &amp; Complaint Complaints</div>
-                                </div>
-                            </div>
-                            <span class="px-2.5 py-1 rounded-full bg-red-500/20 text-red-400 text-xs font-mono font-bold animate-pulse" data-i18n="inbox_spam_badge">99+ Unread Spam</span>
-                        </div>
-                        <div class="grid grid-cols-12 gap-3 font-mono text-xs">
-                            <div class="col-span-4 bg-paper-800/90 p-3 rounded-xl border border-white/5 space-y-2 text-[11px] text-slate-400">
-                                <div class="px-2 py-1.5 rounded-lg bg-red-500/20 text-red-300 font-bold flex justify-between items-center"><span>Junk / Spam</span><span class="text-[10px] bg-red-500 text-slate-950 px-1.5 rounded-full font-bold">99+</span></div>
-                                <div class="px-2 py-1 hover:text-slate-200">Primary</div>
-                                <div class="px-2 py-1 hover:text-slate-200">All Mail</div>
-                                <div class="px-2 py-1 hover:text-slate-200">Promotions</div>
-                                <div class="px-2 py-1 hover:text-slate-200">Social</div>
-                                <div class="px-2 py-1 hover:text-slate-200">Important</div>
-                                <div class="px-2 py-1 hover:text-slate-200 text-slate-500">Trash</div>
-                                <div class="pt-3 border-t border-white/10 text-[10px] text-red-400 italic">*User perspective: About to select all &amp; delete.</div>
-                            </div>
-                            <div class="col-span-8 space-y-2.5">
-                                <div class="p-3 rounded-xl bg-paper-800/90 border border-red-500/20 text-slate-400 space-y-1">
-                                    <div class="flex justify-between text-slate-300 font-bold text-[11px]"><span class="truncate">bot@seo-blast-agency.com</span><span class="text-[9px] text-slate-500">10:42 AM</span></div>
-                                    <div class="text-red-400 font-semibold text-[11px]" data-i18n="spam1_subject">"URGENT: Your website page #1 ranking guaranteed!!"</div>
-                                    <p class="text-[10px] text-slate-400 font-light truncate" data-i18n="spam1_body">Dear Sir/Madam, we noticed your website lacks backlinks. Pay $500/mo now for 10,000 links...</p>
-                                </div>
-                                <div class="p-3 rounded-xl bg-paper-800/90 border border-red-500/20 text-slate-400 space-y-1">
-                                    <div class="flex justify-between text-slate-300 font-bold text-[11px]"><span class="truncate">customer-complaints@site.ca</span><span class="text-[9px] text-slate-500">08:15 AM</span></div>
-                                    <div class="text-amber-400 font-semibold text-[11px]" data-i18n="spam2_subject">Review: "Menu won't open on phone!"</div>
-                                    <p class="text-[10px] text-slate-400 font-light truncate" data-i18n="spam2_body">"Forced 15MB PDF download on mobile! Can't find opening hours or services!"</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="mt-6 p-4 rounded-xl bg-red-950/20 border border-red-500/20 text-xs text-red-300 font-light"><span class="font-bold text-red-400" data-i18n="spam_footer_t">The Outcome:</span> <span data-i18n="spam_footer_d">Ignored emails, frustrated website visitors, lost walk-in customers, and zero trust.</span></div>
-                </div>
-                <div class="lg:col-span-6 bg-paper-900/90 rounded-3xl border-glow p-6 md:p-8 flex flex-col justify-between shadow-2xl relative">
-                    <div class="space-y-4">
-                        <div class="flex items-center justify-between border-b border-white/10 pb-4">
-                            <div class="flex items-center space-x-3">
-                                <div class="w-8 h-8 rounded-lg bg-sunset-amber/20 text-sunset-gold flex items-center justify-center font-mono font-bold text-sm">✉️</div>
-                                <div>
-                                    <div class="font-display font-bold text-white text-sm" data-i18n="inbox_human_t">Khaleb's Direct Outreach</div>
-                                    <div class="text-[11px] font-mono text-sunset-gold" data-i18n="inbox_human_sub">Human, Local &amp; Personalized</div>
-                                </div>
-                            </div>
-                            <span class="px-2.5 py-1 rounded-full bg-teal-verdant/20 text-teal-verdant text-xs font-mono font-bold" data-i18n="inbox_human_badge">100% Transparent</span>
-                        </div>
-                        <div class="p-4 rounded-2xl bg-paper-800/90 border border-sunset-burnt/30 text-xs space-y-3 font-light">
-                            <div class="flex justify-between text-slate-300 font-mono"><span class="font-bold text-sunset-gold">therighthemisphere@proton.me</span><span class="text-[10px] text-slate-400">Tiotia:ke (Montréal) Local</span></div>
-                            <div class="font-display font-bold text-white text-sm" data-i18n="human_mail_sub">"Small fix for your mobile site / Petit détail sur votre menu mobile"</div>
-                            <p class="text-slate-300 leading-relaxed" data-i18n="human_mail_body">"Bonjour! I was checking out your website on my phone and noticed your menu opens as a PDF download instead of a quick mobile view. I run $125 CAD 24-hour confidential audits for Montréal local businesses, vendors, and creators. All findings stay strictly private."</p>
-                            <div class="pt-2 border-t border-white/10 space-y-2">
-                                <div class="text-[11px] font-mono text-sunset-gold font-bold" data-i18n="human_vibe_t">Supporting Local &amp; QTBiPOC Community Creators:</div>
-                                <div class="flex flex-wrap gap-2 text-[10px] font-mono text-slate-300">
-                                    <span class="px-2.5 py-1 rounded-lg bg-paper-900 border border-white/10">✨ Re-branding &amp; Vibe Updates</span>
-                                    <span class="px-2.5 py-1 rounded-lg bg-paper-900 border border-white/10">🎨 Event Posters &amp; Flyers</span>
-                                    <span class="px-2.5 py-1 rounded-lg bg-paper-900 border border-white/10">❄️ Winter Social Media Support</span>
-                                    <span class="px-2.5 py-1 rounded-lg bg-paper-900 border border-white/10">🏳️‍🌈 QTBiPOC Vendor Friendly</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="mt-6 p-4 rounded-xl bg-sunset-burnt/10 border border-sunset-amber/30 text-xs text-slate-300 font-light flex items-center justify-between">
-                        <div><span class="font-bold text-sunset-gold" data-i18n="human_footer_t">Long-Term Value:</span> <span data-i18n="human_footer_d">Build real relationships that keep your brand thriving through winter.</span></div>
-                        <a href="#contact" onclick="selectService('retainer')" class="px-3 py-1.5 rounded-lg bg-sunset-burnt text-slate-950 font-bold text-[11px] hover:bg-sunset-gold transition-colors whitespace-nowrap">Connect</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+        <section id="value" class="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
+          <div class="mb-10 text-center">
+            <p class="text-sm uppercase tracking-[0.24em] text-orange-200/80" data-i18n="market_subtitle">Fair Market Perspective</p>
+            <h2 class="mt-4 text-4xl font-black text-white sm:text-5xl" data-i18n="market_title">Money Painfully Spent vs. Grounded Local Value</h2>
+          </div>
 
-    <section id="audit-demo" class="py-24 bg-paper-800 border-t border-white/5 relative">
-        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex flex-col md:flex-row md:items-end justify-between mb-12">
+          <div class="grid gap-6 lg:grid-cols-3">
+            <div class="border-glow rounded-[1.75rem] bg-[#17120f] p-6">
+              <div class="mb-4 text-4xl animate-fly-money-1">💸</div>
+              <p class="text-xl font-semibold text-white">High-end agency quote</p>
+              <p class="mt-3 text-stone-300">Too much money for too little clarity, too much overhead, and too many extra layers of “creative” friction.</p>
+            </div>
+            <div class="border-glow rounded-[1.75rem] bg-[#17120f] p-6">
+              <div class="mb-4 text-4xl animate-fly-money-2">🌿</div>
+              <p class="text-xl font-semibold text-white">Local, grounded pricing</p>
+              <p class="mt-3 text-stone-300">Clear scope, direct communication, real fixes, and a process that respects your budget instead of weaponizing it.</p>
+            </div>
+            <div class="border-glow rounded-[1.75rem] bg-[#17120f] p-6">
+              <div class="mb-4 text-4xl animate-fly-money-3">🧩</div>
+              <p class="text-xl font-semibold text-white">Fair-value execution</p>
+              <p class="mt-3 text-stone-300">Useful work, honest recommendations, and a budget that reflects actual technical effort — not vanity pricing.</p>
+            </div>
+          </div>
+        </section>
+
+        <section id="services" class="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
+          <div class="mb-10 text-center">
+            <p class="text-sm uppercase tracking-[0.24em] text-orange-200/80" data-i18n="services_subtitle">What I Do</p>
+            <h2 class="mt-4 text-4xl font-black text-white sm:text-5xl" data-i18n="services_title">Full-Stack Code, Design & Security</h2>
+          </div>
+
+          <div class="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
+            <div class="rounded-[1.75rem] border border-white/10 bg-[#17120f] p-6">
+              <div class="mb-4 text-3xl">🧱</div>
+              <h3 class="text-xl font-bold text-white">Web Repair</h3>
+              <p class="mt-3 text-stone-300">Fix broken layouts, stale stacks, bad migrations, and messy front-end logic that slows everything down.</p>
+            </div>
+            <div class="rounded-[1.75rem] border border-white/10 bg-[#17120f] p-6">
+              <div class="mb-4 text-3xl">🛡️</div>
+              <h3 class="text-xl font-bold text-white">Security Audit</h3>
+              <p class="mt-3 text-stone-300">Review exposure points, weak plugins, risky assumptions, and practical fixes without panic or buzzwords.</p>
+            </div>
+            <div class="rounded-[1.75rem] border border-white/10 bg-[#17120f] p-6">
+              <div class="mb-4 text-3xl">🎨</div>
+              <h3 class="text-xl font-bold text-white">Design QA</h3>
+              <p class="mt-3 text-stone-300">Improve UX consistency, identify friction points, and shape cleaner interfaces for better conversion.</p>
+            </div>
+            <div class="rounded-[1.75rem] border border-white/10 bg-[#17120f] p-6">
+              <div class="mb-4 text-3xl">⚙️</div>
+              <h3 class="text-xl font-bold text-white">Modernization</h3>
+              <p class="mt-3 text-stone-300">Upgrade outdated code in a thoughtful, sustainable way so you do not have to rebuild everything from scratch.</p>
+            </div>
+          </div>
+        </section>
+
+        <section id="mailbox" class="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
+          <div class="grid gap-8 rounded-[2rem] border border-orange-400/20 bg-[#17120f] p-6 md:p-8 lg:grid-cols-[0.85fr_1.15fr] lg:p-12">
+            <div class="flex items-center justify-center">
+              <div class="animate-float-slow flex h-52 w-52 items-center justify-center rounded-full border border-orange-400/40 bg-gradient-to-br from-orange-500/10 to-amber-300/10 text-6xl shadow-glow">
+                ✉️
+              </div>
+            </div>
+            <div>
+              <p class="text-sm uppercase tracking-[0.24em] text-orange-200/80" data-i18n="mail_subtitle">Communication Philosophy</p>
+              <h2 class="mt-4 text-4xl font-black text-white" data-i18n="mail_title">Generic Email Spam vs. Authentic Community Vibe</h2>
+              <p class="mt-5 text-lg text-stone-300" data-i18n="mail_desc">
+                Small business owners and local artists get spammed daily by automated outreach. This service avoids the script and focuses on a direct, grounded conversation that respects the work and the person behind it.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section id="demo" class="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
+          <div class="mb-10 text-center">
+            <p class="text-sm uppercase tracking-[0.24em] text-orange-200/80" data-i18n="demo_subtitle">Proof of Quality</p>
+            <h2 class="mt-4 text-4xl font-black text-white sm:text-5xl" data-i18n="demo_title">Demonstration Website & Security Audit</h2>
+          </div>
+
+          <div class="rounded-[2rem] border border-white/10 bg-[#17120f] p-6 md:p-8">
+            <div class="grid gap-6 lg:grid-cols-3">
+              <div class="rounded-2xl border border-white/10 bg-white/5 p-5">
+                <p class="text-xs uppercase tracking-[0.2em] text-stone-400">01</p>
+                <h3 class="mt-3 text-xl font-semibold text-white">Design review</h3>
+                <p class="mt-3 text-stone-300">Look for clutter, hidden friction, and inconsistency between intention and visual hierarchy.</p>
+              </div>
+              <div class="rounded-2xl border border-white/10 bg-white/5 p-5">
+                <p class="text-xs uppercase tracking-[0.2em] text-stone-400">02</p>
+                <h3 class="mt-3 text-xl font-semibold text-white">Code audit</h3>
+                <p class="mt-3 text-stone-300">Identify risky dependencies, weak logic, and maintainability problems before they compound.</p>
+              </div>
+              <div class="rounded-2xl border border-white/10 bg-white/5 p-5">
+                <p class="text-xs uppercase tracking-[0.2em] text-stone-400">03</p>
+                <h3 class="mt-3 text-xl font-semibold text-white">Actionable report</h3>
+                <p class="mt-3 text-stone-300">Scope the work, explain technical trade-offs, and recommend the smallest useful next step.</p>
+              </div>
+            </div>
+
+            <p class="mt-6 text-sm text-stone-400" data-i18n="demo_disclaimer">
+              *Demonstration report using a fictional Montréal café (North Star Café). No client was harmed in the making of this mockup.
+            </p>
+          </div>
+        </section>
+
+        <section class="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
+          <div class="mb-10 text-center">
+            <p class="text-sm uppercase tracking-[0.24em] text-orange-200/80" data-i18n="proc_subtitle">Protected & Confidential Workflow</p>
+            <h2 class="mt-4 text-4xl font-black text-white sm:text-5xl" data-i18n="proc_title">5-Step Scam-Free Working Process</h2>
+          </div>
+
+          <div class="grid gap-4 md:grid-cols-2 xl:grid-cols-5">
+            <div class="rounded-[1.5rem] border border-white/10 bg-[#17120f] p-5">
+              <p class="text-xs uppercase tracking-[0.2em] text-orange-200/80">01</p>
+              <h3 class="mt-3 text-lg font-bold text-white">Scope</h3>
+            </div>
+            <div class="rounded-[1.5rem] border border-white/10 bg-[#17120f] p-5">
+              <p class="text-xs uppercase tracking-[0.2em] text-orange-200/80">02</p>
+              <h3 class="mt-3 text-lg font-bold text-white">Quote</h3>
+            </div>
+            <div class="rounded-[1.5rem] border border-white/10 bg-[#17120f] p-5">
+              <p class="text-xs uppercase tracking-[0.2em] text-orange-200/80">03</p>
+              <h3 class="mt-3 text-lg font-bold text-white">Build</h3>
+            </div>
+            <div class="rounded-[1.5rem] border border-white/10 bg-[#17120f] p-5">
+              <p class="text-xs uppercase tracking-[0.2em] text-orange-200/80">04</p>
+              <h3 class="mt-3 text-lg font-bold text-white">Review</h3>
+            </div>
+            <div class="rounded-[1.5rem] border border-white/10 bg-[#17120f] p-5">
+              <p class="text-xs uppercase tracking-[0.2em] text-orange-200/80">05</p>
+              <h3 class="mt-3 text-lg font-bold text-white">Deliver</h3>
+            </div>
+          </div>
+        </section>
+
+        <section id="about" class="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
+          <div class="grid gap-8 lg:grid-cols-[0.8fr_1.2fr]">
+            <div class="flex justify-center">
+              <div class="overflow-hidden rounded-[2rem] border border-white/10 bg-[#17120f] p-3 shadow-glow">
+                <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=800&q=80" alt="Portrait of the freelancer" class="h-[420px] w-full rounded-[1.5rem] object-cover" />
+              </div>
+            </div>
+            <div>
+              <p class="text-sm uppercase tracking-[0.24em] text-orange-200/80" data-i18n="about_subtitle">About Me</p>
+              <h2 class="mt-4 text-4xl font-black text-white" data-i18n="about_title">Independent Web Specialist & Digital Auditor</h2>
+              <p class="mt-6 text-lg text-stone-300" data-i18n="about_bio_1">
+                I’m a Tiotia:ke (Montréal) based freelance developer, code repair specialist, and digital auditor helping businesses repair messy systems, improve trust, and communicate with clear technical answers.
+              </p>
+              <p class="mt-4 text-lg text-stone-300" data-i18n="about_bio_2">
+                Whether the issue is a failing site, a poorly scoped quote, or a vulnerable online presence, the goal is simple: make the work useful, honest, and sustainable.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section id="contact" class="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
+          <div class="mb-10 text-center">
+            <p class="text-sm uppercase tracking-[0.24em] text-orange-200/80" data-i18n="contact_subtitle">Get In Touch</p>
+            <h2 class="mt-4 text-4xl font-black text-white sm:text-5xl" data-i18n="contact_title">Request an Audit or Site Service</h2>
+          </div>
+
+          <div class="grid gap-8 lg:grid-cols-[0.9fr_1.1fr]">
+            <div class="rounded-[2rem] border border-white/10 bg-[#17120f] p-6">
+              <h3 class="text-2xl font-black text-white">Working style</h3>
+              <ul class="mt-6 space-y-4 text-stone-300">
+                <li>• Clear scope before code or invoices</li>
+                <li>• Fixed pricing when possible</li>
+                <li>• Direct feedback and practical next steps</li>
+                <li>• Respect for privacy and confidentiality</li>
+              </ul>
+            </div>
+
+            <div class="rounded-[2rem] border border-white/10 bg-[#17120f] p-6">
+              <form id="contactForm" action="https://formspree.io/f/xnqepjyp" method="POST" class="space-y-5">
                 <div>
-                    <span class="text-xs font-mono text-sunset-gold uppercase tracking-widest font-semibold" data-i18n="demo_subtitle">Proof of Quality</span>
-                    <h2 class="text-3xl sm:text-4xl font-display font-extrabold text-white mt-1" data-i18n="demo_title">Demonstration Website &amp; Security Audit</h2>
+                  <label for="name" class="mb-2 block text-sm font-medium text-stone-200">Name</label>
+                  <input id="name" name="name" type="text" required class="w-full rounded-xl border border-white/10 bg-[#0d0b09] px-4 py-3 text-white outline-none ring-0 transition focus:border-orange-400" placeholder="Your name" />
                 </div>
-                <p class="text-xs font-mono text-slate-400 mt-2 md:mt-0 italic" data-i18n="demo_disclaimer">*Demonstration report using a fictional Montréal café (North Star Café). No client relationship implied.</p>
-            </div>
-            <div class="space-y-4">
-                <div class="bg-paper-900 rounded-2xl border border-white/10 overflow-hidden transition-all">
-                    <button onclick="toggleAccordion('finding1')" class="w-full px-6 py-5 flex items-center justify-between text-left hover:bg-white/5 transition-colors">
-                        <div class="flex items-center space-x-4">
-                            <span class="px-3 py-1 rounded-full bg-red-500/10 text-red-400 border border-red-500/20 text-xs font-mono font-bold" data-i18n="p_high">HIGH PRIORITY</span>
-                            <span class="font-bold text-white text-base font-display" data-i18n="f1_title">Finding 1: Unclear Primary Call to Action on Mobile</span>
-                        </div>
-                        <span id="icon-finding1" class="text-slate-400 font-mono text-2xl transition-transform duration-200">+</span>
-                    </button>
-                    <div id="body-finding1" class="hidden px-6 pb-6 pt-2 text-sm text-slate-300 border-t border-white/5 space-y-3 font-light">
-                        <p><strong>Observation:</strong> The homepage introduces the café but does not immediately guide mobile visitors on what step to take next (e.g., view menu, order online, or get directions).</p>
-                        <p class="text-sunset-gold font-medium"><strong>Recommendation:</strong> Add 3 tap-friendly action buttons immediately beneath the hero banner: [View Menu], [Get Directions], and [Order Online].</p>
-                    </div>
-                </div>
-                <div class="bg-paper-900 rounded-2xl border border-white/10 overflow-hidden transition-all">
-                    <button onclick="toggleAccordion('finding2')" class="w-full px-6 py-5 flex items-center justify-between text-left hover:bg-white/5 transition-colors">
-                        <div class="flex items-center space-x-4">
-                            <span class="px-3 py-1 rounded-full bg-red-500/10 text-red-400 border border-red-500/20 text-xs font-mono font-bold" data-i18n="p_high">HIGH PRIORITY</span>
-                            <span class="font-bold text-white text-base font-display" data-i18n="f2_title">Finding 2: Mobile Contact Information Obscured</span>
-                        </div>
-                        <span id="icon-finding2" class="text-slate-400 font-mono text-2xl transition-transform duration-200">+</span>
-                    </button>
-                    <div id="body-finding2" class="hidden px-6 pb-6 pt-2 text-sm text-slate-300 border-t border-white/5 space-y-3 font-light">
-                        <p><strong>Observation:</strong> The physical address and phone number only exist at the footer. Mobile customers looking for opening hours leave before finding them.</p>
-                        <p class="text-sunset-gold font-medium"><strong>Recommendation:</strong> Place tap-to-call phone links and operating hours right beneath the hero section on mobile screens.</p>
-                    </div>
-                </div>
-                <div class="bg-paper-900 rounded-2xl border border-white/10 overflow-hidden transition-all">
-                    <button onclick="toggleAccordion('finding3')" class="w-full px-6 py-5 flex items-center justify-between text-left hover:bg-white/5 transition-colors">
-                        <div class="flex items-center space-x-4">
-                            <span class="px-3 py-1 rounded-full bg-amber-500/10 text-amber-400 border border-amber-500/20 text-xs font-mono font-bold" data-i18n="p_med">MEDIUM PRIORITY</span>
-                            <span class="font-bold text-white text-base font-display" data-i18n="f3_title">Finding 3: Weak Social Proof &amp; Customer Reviews</span>
-                        </div>
-                        <span id="icon-finding3" class="text-slate-400 font-mono text-2xl transition-transform duration-200">+</span>
-                    </button>
-                    <div id="body-finding3" class="hidden px-6 pb-6 pt-2 text-sm text-slate-300 border-t border-white/5 space-y-3 font-light">
-                        <p><strong>Observation:</strong> The copy states "Great coffee and good food," which is generic and lacks local customer trust signals.</p>
-                        <p class="text-sunset-gold font-medium"><strong>Recommendation:</strong> Replace generic statements with specific local highlights, recent Google review badges, and dietary/vegan options.</p>
-                    </div>
-                </div>
-                <div class="bg-paper-900 rounded-2xl border border-white/10 overflow-hidden transition-all">
-                    <button onclick="toggleAccordion('finding4')" class="w-full px-6 py-5 flex items-center justify-between text-left hover:bg-white/5 transition-colors">
-                        <div class="flex items-center space-x-4">
-                            <span class="px-3 py-1 rounded-full bg-red-500/10 text-red-400 border border-red-500/20 text-xs font-mono font-bold" data-i18n="p_high">HIGH PRIORITY</span>
-                            <span class="font-bold text-white text-base font-display" data-i18n="f4_title">Finding 4: Inconsistent Bilingual (EN / FR) Experience</span>
-                        </div>
-                        <span id="icon-finding4" class="text-slate-400 font-mono text-2xl transition-transform duration-200">+</span>
-                    </button>
-                    <div id="body-finding4" class="hidden px-6 pb-6 pt-2 text-sm text-slate-300 border-t border-white/5 space-y-3 font-light">
-                        <p><strong>Observation:</strong> Certain menu items and contact forms remain in English even when the French toggle is active, creating friction for Montréal visitors.</p>
-                        <p class="text-sunset-gold font-medium"><strong>Recommendation:</strong> Complete 100% translation symmetry across menus, checkout links, and contact confirmation states.</p>
-                    </div>
-                </div>
-                <div class="bg-paper-900 rounded-2xl border border-white/10 overflow-hidden transition-all">
-                    <button onclick="toggleAccordion('finding5')" class="w-full px-6 py-5 flex items-center justify-between text-left hover:bg-white/5 transition-colors">
-                        <div class="flex items-center space-x-4">
-                            <span class="px-3 py-1 rounded-full bg-red-500/10 text-red-400 border border-red-500/20 text-xs font-mono font-bold" data-i18n="p_high">SECURITY CRITICAL</span>
-                            <span class="font-bold text-white text-base font-display" data-i18n="f5_title">Finding 5: Exposed Config &amp; API Key Vulnerability</span>
-                        </div>
-                        <span id="icon-finding5" class="text-slate-400 font-mono text-2xl transition-transform duration-200">+</span>
-                    </button>
-                    <div id="body-finding5" class="hidden px-6 pb-6 pt-2 text-sm text-slate-300 border-t border-white/5 space-y-3 font-light">
-                        <p><strong>Observation:</strong> A publicly accessible <code>.env.bak</code> file was detected in the web root containing exposed third-party API tokens.</p>
-                        <p class="text-sunset-gold font-medium"><strong>Recommendation:</strong> Immediately revoke exposed keys, remove public config backup files, and add <code>.env*</code> to web server access block rules.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="mt-10 text-center bg-paper-900/90 backdrop-blur-md p-7 rounded-2xl border border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4">
-                <div class="text-left">
-                    <div class="font-display font-bold text-white text-lg" data-i18n="demo_banner_title">Want a report like this for your website?</div>
-                    <div class="text-xs text-slate-400 font-mono" data-i18n="demo_banner_sub">Delivered in 24 hours with exact prioritized fixes for $125 CAD. Strictly confidential.</div>
-                </div>
-                <button onclick="openAuditModal()" class="px-6 py-3 rounded-xl bg-sunset-burnt hover:bg-sunset-gold text-slate-950 font-bold text-xs transition-all shadow-md whitespace-nowrap" data-i18n="demo_banner_btn">View Full Sample PDF Layout</button>
-            </div>
-        </div>
-    </section>
 
-    <section id="process" class="py-24 bg-paper-900 border-t border-white/5 relative">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
-                <h2 class="text-xs font-mono text-sunset-gold uppercase tracking-widest font-semibold" data-i18n="proc_subtitle">Protected &amp; Confidential Workflow</h2>
-                <h3 class="text-3xl sm:text-4xl font-display font-extrabold text-white" data-i18n="proc_title">5-Step Scam-Free Working Process</h3>
-                <p class="text-slate-400 text-sm font-light" data-i18n="proc_desc">Clear scope, upfront fixed pricing, 100% confidentiality, and transparent delivery protects both sides from fraud and hidden fees.</p>
-            </div>
-            <div class="grid md:grid-cols-5 gap-4 mb-12">
-                <div class="bg-paper-800/80 p-6 rounded-2xl border border-white/5 hover:border-sunset-burnt/30 transition-all">
-                    <div class="text-xs font-mono text-sunset-gold mb-2 font-bold">STEP 01</div>
-                    <div class="font-display font-bold text-white text-base mb-1" data-i18n="step1_t">Submit Site</div>
-                    <div class="text-xs text-slate-400 font-light" data-i18n="step1_d">Send URL &amp; permissions check via contact form.</div>
+                <div>
+                  <label for="email" class="mb-2 block text-sm font-medium text-stone-200">Email</label>
+                  <input id="email" name="email" type="email" required class="w-full rounded-xl border border-white/10 bg-[#0d0b09] px-4 py-3 text-white outline-none focus:border-orange-400" placeholder="Your email" />
                 </div>
-                <div class="bg-paper-800/80 p-6 rounded-2xl border border-white/5 hover:border-sunset-burnt/30 transition-all">
-                    <div class="text-xs font-mono text-sunset-gold mb-2 font-bold">STEP 02</div>
-                    <div class="font-display font-bold text-white text-base mb-1" data-i18n="step2_t">Scope &amp; Agreement</div>
-                    <div class="text-xs text-slate-400 font-light" data-i18n="step2_d">Fixed price ($125 CAD) and scope agreed in writing.</div>
-                </div>
-                <div class="bg-paper-800/80 p-6 rounded-2xl border border-white/5 hover:border-sunset-burnt/30 transition-all">
-                    <div class="text-xs font-mono text-sunset-gold mb-2 font-bold">STEP 03</div>
-                    <div class="font-display font-bold text-white text-base mb-1" data-i18n="step3_t">Secure Payment</div>
-                    <div class="text-xs text-slate-400 font-light" data-i18n="step3_d">Payment received via Interac e-Transfer or PayPal.</div>
-                </div>
-                <div class="bg-paper-800/80 p-6 rounded-2xl border border-white/5 hover:border-sunset-burnt/30 transition-all">
-                    <div class="text-xs font-mono text-sunset-gold mb-2 font-bold">STEP 04</div>
-                    <div class="font-display font-bold text-white text-base mb-1" data-i18n="step4_t">24h Confidential Report</div>
-                    <div class="text-xs text-slate-400 font-light" data-i18n="step4_d">Receive your private 5-point report &amp; code fixes.</div>
-                </div>
-                <div class="bg-paper-800/80 p-6 rounded-2xl border border-white/5 hover:border-sunset-burnt/30 transition-all">
-                    <div class="text-xs font-mono text-sunset-gold mb-2 font-bold">STEP 05</div>
-                    <div class="font-display font-bold text-white text-base mb-1" data-i18n="step5_t">Optional Fixes</div>
-                    <div class="text-xs text-slate-400 font-light" data-i18n="step5_d">Implementation quoted separately with zero obligation.</div>
-                </div>
-            </div>
-            <div class="bg-paper-800/90 backdrop-blur-xl border-glow rounded-3xl p-7 md:p-9 shadow-2xl">
-                <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
-                    <div class="space-y-3">
-                        <div class="inline-flex items-center space-x-2 text-xs font-mono text-sunset-gold uppercase font-bold">
-                            <span>🛡️</span>
-                            <span data-i18n="fraud_title">Strict Payment &amp; Confidentiality Protection Policy</span>
-                        </div>
-                        <h4 class="text-2xl font-display font-bold text-white" data-i18n="fraud_heading">Zero Cheque / Verified Payments / 100% Client Privacy</h4>
-                        <p class="text-xs sm:text-sm text-slate-300 leading-relaxed max-w-3xl font-light" data-i18n="fraud_text">To prevent Canadian Anti-Fraud Centre job/service scams: Work begins strictly after payment is received via legitimate Interac e-Transfer or PayPal. <strong>No paper cheques, no overpayment requests, no gift cards, no crypto. Your technical audit findings and site data are 100% confidential and will never be shared or published.</strong></p>
-                    </div>
-                    <div class="flex flex-wrap items-center gap-3 text-xs font-mono text-slate-400 whitespace-nowrap">
-                        <div class="px-4 py-2.5 rounded-xl bg-paper-900 border border-white/10">Interac e-Transfer</div>
-                        <div class="px-4 py-2.5 rounded-xl bg-paper-900 border border-white/10">PayPal Verified</div>
-                        <div class="px-4 py-2.5 rounded-xl bg-paper-900 border border-sunset-amber/30 text-sunset-gold font-bold">🔒 100% Private</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
 
-    <section id="about" class="py-24 bg-paper-800 border-t border-white/5 relative">
-        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid md:grid-cols-12 gap-12 items-center">
-                <div class="md:col-span-5 flex justify-center">
-                    <div class="relative group">
-                        <div class="w-64 h-80 sm:w-72 sm:h-96 rounded-3xl overflow-hidden border-2 border-sunset-amber/30 shadow-2xl bg-paper-900 relative">
-                            <img src="khaleb.jpg" alt="Khaleb George" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500" onerror="this.style.display='none'; document.getElementById('photoFallback').classList.remove('hidden');" />
-                            <div id="photoFallback" class="hidden absolute inset-0 flex flex-col items-center justify-center p-6 bg-paper-900 text-center">
-                                <span class="text-6xl font-display font-extrabold text-white mb-2">KG</span>
-                                <span class="text-xs font-mono text-sunset-gold font-bold">KHALEB GEORGE</span>
-                                <span class="text-[11px] text-slate-400 font-mono mt-1">Tiotia:ke (Montréal, QC)</span>
-                            </div>
-                        </div>
-                        <div class="absolute -bottom-4 -right-4 bg-sunset-burnt text-slate-950 text-xs font-mono px-4 py-2 rounded-2xl font-bold shadow-xl border border-white/10 flex items-center gap-2">
-                            <span class="status-dot pulse"></span>
-                            <span>Tiotia:ke / Montréal</span>
-                        </div>
-                    </div>
+                <div>
+                  <label for="serviceType" class="mb-2 block text-sm font-medium text-stone-200">Service needed</label>
+                  <select id="serviceType" name="serviceType" class="w-full rounded-xl border border-white/10 bg-[#0d0b09] px-4 py-3 text-white outline-none focus:border-orange-400">
+                    <option value="audit">Website Audit</option>
+                    <option value="repair">Code Repair</option>
+                    <option value="security">Security Review</option>
+                    <option value="design">UX / Design Review</option>
+                    <option value="other">Other</option>
+                  </select>
                 </div>
-                <div class="md:col-span-7 space-y-6">
-                    <span class="text-xs font-mono text-sunset-gold uppercase tracking-widest font-semibold" data-i18n="about_subtitle">About Me</span>
-                    <h2 class="text-3xl sm:text-4xl font-display font-extrabold text-white leading-tight" data-i18n="about_title">Independent Web Specialist &amp; Digital Auditor</h2>
-                    <p class="text-slate-300 text-base leading-relaxed font-light" data-i18n="about_bio_1">I’m a Tiotia:ke (Montréal) based freelance developer, code repair specialist, and content reviewer. I help small local businesses, independent creators, and organizations fix broken websites, clean up code, and ensure their online presence is secure, bilingual, and easy to use.</p>
-                    <p class="text-slate-300 text-base leading-relaxed font-light" data-i18n="about_bio_2">My background spans web application design, frontend debugging (React, Node, HTML/CSS), digital security credential hygiene, and articulate writing. I don't use high-pressure sales tactics or bloated monthly agency contracts — just clear, practical technical work delivered on time.</p>
-                    <div class="pt-2 flex flex-wrap gap-2.5 text-xs font-mono text-slate-400">
-                        <span class="px-3.5 py-2 rounded-xl bg-paper-900 border border-white/10">Tiotia:ke (Montréal, QC)</span>
-                        <span class="px-3.5 py-2 rounded-xl bg-paper-900 border border-white/10">Bilingual (EN/FR)</span>
-                        <span class="px-3.5 py-2 rounded-xl bg-paper-900 border border-white/10">Full-Stack Code</span>
-                        <span class="px-3.5 py-2 rounded-xl bg-paper-900 border border-white/10">Security Auditing</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
 
-    <section id="contact" class="py-24 bg-paper-900 border-t border-white/5 relative">
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center max-w-2xl mx-auto mb-14 space-y-3">
-                <h2 class="text-xs font-mono text-sunset-gold uppercase tracking-widest font-semibold" data-i18n="contact_subtitle">Get In Touch</h2>
-                <h3 class="text-3xl sm:text-4xl font-display font-extrabold text-white" data-i18n="contact_title">Request an Audit or Site Service</h3>
-                <p class="text-slate-400 text-sm font-light" data-i18n="contact_desc">Fill out the request form below. I will reply within a few hours to confirm scope, terms, and payment details. All audits are 100% confidential.</p>
-            </div>
-            <div class="bg-paper-800/90 backdrop-blur-xl rounded-3xl p-7 sm:p-11 border border-white/10 shadow-2xl">
-                <form id="contactForm" action="https://formspree.io/f/xaeegqdz" method="POST" class="space-y-6">
-                    <div class="grid sm:grid-cols-2 gap-6">
-                        <div>
-                            <label for="clientName" class="block text-xs font-mono text-slate-300 mb-2" data-i18n="f_name">Your Name *</label>
-                            <input type="text" id="clientName" name="name" required placeholder="Jane Doe" class="w-full px-4 py-3.5 rounded-xl bg-paper-900 border border-white/10 text-white placeholder-slate-500 focus:outline-none focus:border-sunset-burnt transition-colors text-sm" />
-                        </div>
-                        <div>
-                            <label for="clientEmail" class="block text-xs font-mono text-slate-300 mb-2" data-i18n="f_email">Email Address *</label>
-                            <input type="email" id="clientEmail" name="email" required placeholder="jane@example.com" class="w-full px-4 py-3.5 rounded-xl bg-paper-900 border border-white/10 text-white placeholder-slate-500 focus:outline-none focus:border-sunset-burnt transition-colors text-sm" />
-                        </div>
-                    </div>
-                    <div class="grid sm:grid-cols-2 gap-6">
-                        <div>
-                            <label for="siteUrl" class="block text-xs font-mono text-slate-300 mb-2" data-i18n="f_url">Website URL to Review *</label>
-                            <input type="url" id="siteUrl" name="website" required placeholder="https://yourbusiness.com" class="w-full px-4 py-3.5 rounded-xl bg-paper-900 border border-white/10 text-white placeholder-slate-500 focus:outline-none focus:border-sunset-burnt transition-colors text-sm" />
-                        </div>
-                        <div>
-                            <label for="serviceType" class="block text-xs font-mono text-slate-300 mb-2" data-i18n="f_service">Select Desired Service *</label>
-                            <select id="serviceType" name="service" required class="w-full px-4 py-3.5 rounded-xl bg-paper-900 border border-white/10 text-white focus:outline-none focus:border-sunset-burnt transition-colors text-sm">
-                                <option value="audit-125">24-Hour Express Audit ($125 CAD)</option>
-                                <option value="repair-295">Full Mobile, Desktop &amp; Speed Package ($295 CAD)</option>
-                                <option value="security">Security &amp; Credential Hygiene Audit</option>
-                                <option value="development">Web / App / Game Design</option>
-                                <option value="retainer">Winter Creative Retainer (Social Vibe / Branding)</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div>
-                        <label class="block text-xs font-mono text-slate-300 mb-2" data-i18n="f_lang">Target Audit Language</label>
-                        <div class="flex flex-wrap items-center gap-6 text-sm text-slate-300 font-mono">
-                            <label class="flex items-center space-x-2 cursor-pointer">
-                                <input type="radio" name="targetLang" value="EN" checked class="accent-sunset-burnt" />
-                                <span>English</span>
-                            </label>
-                            <label class="flex items-center space-x-2 cursor-pointer">
-                                <input type="radio" name="targetLang" value="FR" class="accent-sunset-burnt" />
-                                <span>Français (Montréal)</span>
-                            </label>
-                            <label class="flex items-center space-x-2 cursor-pointer">
-                                <input type="radio" name="targetLang" value="Both" class="accent-sunset-burnt" />
-                                <span>Both (Bilingual)</span>
-                            </label>
-                        </div>
-                    </div>
-                    <div>
-                        <label for="message" class="block text-xs font-mono text-slate-300 mb-2" data-i18n="f_notes">Project Notes or Specific Issues</label>
-                        <textarea id="message" name="message" rows="4" placeholder="Mention any specific broken features, slow pages, or concerns..." class="w-full px-4 py-3.5 rounded-xl bg-paper-900 border border-white/10 text-white placeholder-slate-500 focus:outline-none focus:border-sunset-burnt transition-colors text-sm"></textarea>
-                    </div>
-                    <div class="p-4 rounded-xl bg-paper-900 border border-white/5 space-y-2">
-                        <label for="permission" class="flex items-start space-x-3 cursor-pointer">
-                            <input type="checkbox" id="permission" name="permission_confirmed" required class="mt-1 accent-sunset-burnt rounded" />
-                            <span class="text-xs text-slate-300 leading-normal" data-i18n="f_perm">I confirm that I own this website/repository or have explicit written permission from the owner to request a technical/security review.</span>
-                        </label>
-                    </div>
-                    <button type="submit" class="w-full py-4 rounded-xl bg-gradient-to-r from-sunset-amber via-sunset-burnt to-sunset-terra text-slate-950 font-bold text-base shadow-xl shadow-sunset-burnt/25 hover:shadow-sunset-burnt/45 transition-all transform hover:-translate-y-0.5" data-i18n="f_btn">Send Audit Request</button>
-                </form>
-                <div id="formSuccess" class="hidden p-8 rounded-2xl bg-teal-verdant/10 border border-teal-verdant/30 text-center space-y-3">
-                    <div class="text-3xl">✅</div>
-                    <h4 class="text-xl font-display font-bold text-white" data-i18n="succ_t">Audit Request Received!</h4>
-                    <p class="text-xs text-slate-300 max-w-md mx-auto leading-relaxed" data-i18n="succ_d">Thank you for reaching out. I will review your submitted URL and get back to your email within 2-4 hours with written scope confirmation, confidentiality agreement, and payment details.</p>
+                <div>
+                  <label for="message" class="mb-2 block text-sm font-medium text-stone-200">Project details</label>
+                  <textarea id="message" name="message" rows="5" required class="w-full rounded-xl border border-white/10 bg-[#0d0b09] px-4 py-3 text-white outline-none focus:border-orange-400" placeholder="Tell me what is happening and what you need help with."></textarea>
                 </div>
-            </div>
-        </div>
-    </section>
 
-    <footer class="py-12 bg-paper-900 border-t border-white/5 text-xs font-mono text-slate-400">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
-            <div class="flex items-center space-x-3">
-                <span class="text-white font-display font-bold">Khaleb George</span>
-                <span>•</span>
-                <span>Tiotia:ke / Montréal, QC</span>
-            </div>
-            <div>© <span id="year"></span> Khaleb George. All rights reserved. • Strictly Confidential Audits</div>
-        </div>
-    </footer>
+                <button type="submit" class="w-full rounded-full bg-gradient-to-r from-orange-400 to-amber-300 px-5 py-3 font-semibold text-[#1d1a17] shadow-glow transition hover:scale-[1.01]">
+                  Send request
+                </button>
+              </form>
 
-    <div id="auditModal" class="fixed inset-0 z-50 hidden modal-backdrop flex items-center justify-center p-4">
-        <div class="bg-paper-800 border border-white/10 rounded-3xl max-w-3xl w-full max-h-[90vh] overflow-y-auto p-6 sm:p-9 space-y-6 shadow-2xl relative">
-            <button onclick="closeAuditModal()" class="absolute top-5 right-5 text-slate-400 hover:text-white text-xl font-mono p-2">✕</button>
-            <div class="border-b border-white/10 pb-4">
-                <div class="text-xs font-mono text-sunset-gold uppercase font-bold" data-i18n="m_sub">Full Sample Audit Report Layout</div>
-                <h3 class="text-2xl font-display font-bold text-white mt-1">Demonstration Website &amp; Security Audit</h3>
-                <p class="text-xs text-slate-400 font-mono mt-1">Subject: North Star Café (Fictional Montréal Business) • Prepared by: Khaleb George</p>
+              <div id="formSuccess" class="hidden mt-5 rounded-xl border border-emerald-500/30 bg-emerald-500/10 p-4 text-emerald-200">
+                Your message has been sent successfully. I’ll reply shortly.
+              </div>
             </div>
-            <div class="space-y-4 text-xs text-slate-300 leading-relaxed font-mono bg-paper-900 p-5 rounded-2xl border border-white/5">
-                <div class="font-bold text-white text-sm">Report Executive Summary:</div>
-                <p>This audit evaluated the North Star Café website for mobile clarity, customer conversion, bilingual completeness, and basic security hygiene.</p>
-                <div class="grid sm:grid-cols-2 gap-3 pt-2 text-[11px]">
-                    <div class="bg-paper-800 p-3 rounded-xl border border-white/5"><strong>Tested Devices:</strong> iPhone 14 Chrome, Android Pixel 7, Desktop Edge</div>
-                    <div class="bg-paper-800 p-3 rounded-xl border border-white/5"><strong>Total Findings:</strong> 5 (3 High, 2 Medium)</div>
-                </div>
-            </div>
-            <div class="space-y-4">
-                <div class="border-l-2 border-sunset-burnt pl-4 py-1">
-                    <div class="font-bold text-white text-sm">1. Primary Call-to-Action Missing Above Fold (High)</div>
-                    <div class="text-xs text-slate-300 mt-1 font-light">Mobile users must scroll 3 full screens to locate the menu link or phone number. Fix: Add fixed top quick links.</div>
-                </div>
-                <div class="border-l-2 border-sunset-burnt pl-4 py-1">
-                    <div class="font-bold text-white text-sm">2. Unclickable Phone Number (High)</div>
-                    <div class="text-xs text-slate-300 mt-1 font-light">Phone number is rendered inside a static image. Fix: Convert to standard <code>tel:</code> HTML link.</div>
-                </div>
-                <div class="border-l-2 border-amber-500 pl-4 py-1">
-                    <div class="font-bold text-white text-sm">3. Incomplete French Localization (Medium)</div>
-                    <div class="text-xs text-slate-300 mt-1 font-light">Checkout options revert to English. Fix: Ensure full i18n translation coverage across checkout modals.</div>
-                </div>
-                <div class="border-l-2 border-sunset-burnt pl-4 py-1">
-                    <div class="font-bold text-white text-sm">4. Publicly Exposed Backup Configuration File (Security Critical)</div>
-                    <div class="text-xs text-slate-300 mt-1 font-light">Extracted exposed Stripe API test key in public web folder. Fix: Delete server backups and restrict <code>.env</code> access.</div>
-                </div>
-            </div>
-            <div class="pt-4 flex justify-between items-center border-t border-white/10">
-                <span class="text-xs text-slate-400 font-mono">$125 CAD • 24h Turnaround</span>
-                <a href="#contact" onclick="closeAuditModal(); selectService('audit-125')" class="px-5 py-2.5 rounded-xl bg-sunset-burnt hover:bg-sunset-gold text-slate-950 font-bold text-xs transition-colors">Order Your Audit</a>
-            </div>
+          </div>
+        </section>
+      </main>
+
+      <footer class="border-t border-white/10">
+        <div class="mx-auto flex max-w-7xl flex-col gap-4 px-4 py-8 text-sm text-stone-400 sm:flex-row sm:items-center sm:justify-between sm:px-6 lg:px-8">
+          <p>© <span id="year"></span> Tiotia:ke</p>
+          <p>Web repairs, honest audits, and grounded digital support.</p>
         </div>
+      </footer>
+    </div>
+
+    <div id="auditModal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 modal-backdrop">
+      <div class="relative w-full max-w-2xl rounded-[2rem] border border-orange-400/20 bg-[#17120f] p-6 shadow-glow">
+        <button type="button" onclick="closeAuditModal()" class="absolute right-4 top-4 rounded-full border border-white/10 px-3 py-1 text-sm text-stone-200 hover:border-orange-400/40 hover:text-orange-200" aria-label="Close modal">✕</button>
+
+        <div class="space-y-4">
+          <p class="text-sm uppercase tracking-[0.24em] text-orange-200/80">Sample audit</p>
+          <h3 class="text-3xl font-black text-white">North Star Café — Quick digital review</h3>
+          <div class="rounded-2xl border border-white/10 bg-white/5 p-4 text-stone-300">
+            <p><strong class="text-white">Finding:</strong> Visual hierarchy is fine, but the site is missing trust-building microcopy, a clear service structure, and a consistent conversion path.</p>
+            <p class="mt-3"><strong class="text-white">Action:</strong> Improve homepage clarity, tighten contact flow, and add a stronger service narrative with confidence-building proof points.</p>
+            <p class="mt-3"><strong class="text-white">Outcome:</strong> Better user confidence and lower friction before a first inquiry.</p>
+          </div>
+        </div>
+      </div>
     </div>
 
     <script>
-        document.getElementById('year').textContent = new Date().getFullYear();
+      document.getElementById('year').textContent = new Date().getFullYear();
 
-        function toggleMobileMenu() {
-            const menu = document.getElementById('mobileMenu');
-            menu.classList.toggle('hidden');
+      function toggleMobileMenu() {
+        const menu = document.getElementById('mobileMenu');
+        const button = document.getElementById('mobileMenuButton');
+        const isHidden = menu.classList.toggle('hidden');
+        if (button) {
+          button.setAttribute('aria-expanded', String(!isHidden));
         }
+      }
 
-        function toggleAccordion(id) {
-            const body = document.getElementById('body-' + id);
-            const icon = document.getElementById('icon-' + id);
-            if (body.classList.contains('hidden')) {
-                body.classList.remove('hidden');
-                icon.textContent = '−';
+      function toggleAccordion(id) {
+        const body = document.getElementById('body-' + id);
+        const icon = document.getElementById('icon-' + id);
+        const trigger = document.getElementById('trigger-' + id);
+
+        if (!body || !icon) return;
+
+        const isHidden = body.classList.contains('hidden');
+        body.classList.toggle('hidden', !isHidden);
+        icon.textContent = isHidden ? '−' : '+';
+
+        if (trigger) {
+          trigger.setAttribute('aria-expanded', String(isHidden));
+        }
+      }
+
+      function openAuditModal() {
+        const modal = document.getElementById('auditModal');
+        if (modal) {
+          modal.classList.remove('hidden');
+          modal.classList.add('flex');
+        }
+      }
+
+      function closeAuditModal() {
+        const modal = document.getElementById('auditModal');
+        if (modal) {
+          modal.classList.add('hidden');
+          modal.classList.remove('flex');
+        }
+      }
+
+      function selectService(serviceValue) {
+        const select = document.getElementById('serviceType');
+        if (select) {
+          select.value = serviceValue;
+        }
+      }
+
+      const contactForm = document.getElementById('contactForm');
+      if (contactForm) {
+        contactForm.addEventListener('submit', async function (event) {
+          event.preventDefault();
+          const form = event.currentTarget;
+          const data = new FormData(form);
+
+          try {
+            const response = await fetch(form.action, {
+              method: form.method,
+              body: data,
+              headers: { Accept: 'application/json' }
+            });
+
+            const contentType = response.headers.get('content-type') || '';
+            let payload = null;
+
+            if (contentType.includes('application/json')) {
+              payload = await response.json();
             } else {
-                body.classList.add('hidden');
-                icon.textContent = '+';
+              payload = await response.text();
             }
-        }
 
-        function openAuditModal() {
-            document.getElementById('auditModal').classList.remove('hidden');
-        }
-
-        function closeAuditModal() {
-            document.getElementById('auditModal').classList.add('hidden');
-        }
-
-        function selectService(serviceValue) {
-            const select = document.getElementById('serviceType');
-            if (select) {
-                select.value = serviceValue;
+            if (response.ok) {
+              contactForm.classList.add('hidden');
+              const success = document.getElementById('formSuccess');
+              if (success) success.classList.remove('hidden');
+              form.reset();
+            } else {
+              const msg = payload && payload.errors
+                ? payload.errors.map(err => err.message).join(', ')
+                : 'Oops! Problem submitting form.';
+              alert(msg);
             }
+          } catch (error) {
+            alert('Network error. Please try again or email directly.');
+          }
+        });
+      }
+
+      const translations = {
+        EN: {
+          tagline: 'Tiotia:ke (Montréal, QC) based · Web & Security Audit',
+          nav_value: 'Fair Value',
+          nav_services: 'Services',
+          nav_mailbox: 'Outreach Vibe',
+          nav_demo: 'Sample Audit',
+          nav_about: 'About',
+          nav_contact: 'Contact',
+          nav_cta: 'Request 24h Audit ($125)',
+          hero_badge: 'Tiotia:ke (Montréal) based & Remote Projects',
+          hero_title_1: 'Warm & Organic',
+          hero_title_2: 'tech solutions, just like your services.',
+          hero_desc: 'Full-stack repairs, mobile polish, and clean security improvements designed for local businesses, artists, and service owners who need honesty over hype.',
+          market_subtitle: 'Fair Market Perspective',
+          market_title: 'Money Painfully Spent vs. Grounded Local Value',
+          services_subtitle: 'What I Do',
+          services_title: 'Full-Stack Code, Design & Security',
+          mail_subtitle: 'Communication Philosophy',
+          mail_title: 'Generic Email Spam vs. Authentic Community Vibe',
+          mail_desc: 'Small business owners and local artists get spammed daily by automated outreach. This service avoids the script and focuses on a direct, grounded conversation that respects the work and the person behind it.',
+          demo_subtitle: 'Proof of Quality',
+          demo_title: 'Demonstration Website & Security Audit',
+          demo_disclaimer: '*Demonstration report using a fictional Montréal café (North Star Café). No client was harmed in the making of this mockup.',
+          proc_subtitle: 'Protected & Confidential Workflow',
+          proc_title: '5-Step Scam-Free Working Process',
+          about_subtitle: 'About Me',
+          about_title: 'Independent Web Specialist & Digital Auditor',
+          about_bio_1: 'I’m a Tiotia:ke (Montréal) based freelance developer, code repair specialist, and digital auditor helping businesses repair messy systems, improve trust, and communicate with clear technical answers.',
+          about_bio_2: 'Whether the issue is a failing site, a poorly scoped quote, or a vulnerable online presence, the goal is simple: make the work useful, honest, and sustainable.',
+          contact_subtitle: 'Get In Touch',
+          contact_title: 'Request an Audit or Site Service'
+        },
+        FR: {
+          tagline: 'Basé à Tiotia:ke (Montréal, QC) · Audit Web & Sécurité',
+          nav_value: 'Valeur Juste',
+          nav_services: 'Services',
+          nav_mailbox: 'Style d’Approche',
+          nav_demo: 'Exemple d’Audit',
+          nav_about: 'À propos',
+          nav_contact: 'Contact',
+          nav_cta: 'Demander un audit 24h (125 $)',
+          hero_badge: 'Basé à Tiotia:ke (Montréal) & Projets à distance',
+          hero_title_1: 'Des solutions chaudes',
+          hero_title_2: 'et organiques, comme vos services.',
+          hero_desc: 'Réparations full-stack, finition mobile et améliorations de sécurité pensées pour les PME, artistes et prestataires qui veulent une vraie honnêteté.',
+          market_subtitle: 'Perspective du marché',
+          market_title: 'Dépenses excessives vs. valeur locale juste',
+          services_subtitle: 'Ce que je fais',
+          services_title: 'Code Full-Stack, Design & Sécurité',
+          mail_subtitle: 'Philosophie de communication',
+          mail_title: 'Spam générique vs. approche authentique',
+          mail_desc: 'Les PME et artistes reçoivent trop de messages automatisés. Ce service évite la mise en scène et privilégie une vraie conversation directe.',
+          demo_subtitle: 'Preuve de qualité',
+          demo_title: 'Exemple d’audit web & sécurité',
+          demo_disclaimer: '*Exemple fictif d’un café montréalais (North Star Café). Aucun client n’a été blessé dans la création de cet atelier.',
+          proc_subtitle: 'Processus protégé & confidentiel',
+          proc_title: 'Processus en 5 étapes, sans arnaque',
+          about_subtitle: 'À propos',
+          about_title: 'Spécialiste web indépendant & auditeur numérique',
+          about_bio_1: 'Je suis un développeur indépendant basé à Tiotia:ke (Montréal), spécialiste des réparations de code et de l’audit numérique pour les entreprises qui veulent une vraie solution.',
+          about_bio_2: 'Que ce soit un site bloqué, un devis douteux ou une présence en ligne vulnérable, l’objectif reste le même : faire un travail utile, honnête et durable.',
+          contact_subtitle: 'Contact',
+          contact_title: 'Demander un audit ou un service web'
         }
+      };
 
-        const contactForm = document.getElementById('contactForm');
-        if (contactForm) {
-            contactForm.addEventListener('submit', async function(e) {
-                e.preventDefault();
-                const form = e.target;
-                const data = new FormData(form);
-                
-                try {
-                    const response = await fetch(form.action, {
-                        method: form.method,
-                        body: data,
-                        headers: { 'Accept': 'application/json' }
-                    });
-                    
-                    if (response.ok) {
-                        contactForm.classList.add('hidden');
-                        document.getElementById('formSuccess').classList.remove('hidden');
-                        form.reset();
-                    } else {
-                        const resData = await response.json();
-                        const msg = resData.errors ? resData.errors.map(err => err.message).join(", ") : "Oops! Problem submitting form.";
-                        alert(msg);
-                    }
-                } catch (err) {
-                    alert("Network error. Please try again or email directly.");
-                }
-            });
+      let currentLang = 'EN';
+
+      function toggleLanguage() {
+        currentLang = currentLang === 'EN' ? 'FR' : 'EN';
+        document.documentElement.lang = currentLang.toLowerCase();
+        document.getElementById('langLabel').textContent = currentLang === 'EN' ? 'FR 🇨🇦' : 'EN 🇨🇦';
+
+        const langData = translations[currentLang];
+        document.querySelectorAll('[data-i18n]').forEach(el => {
+          const key = el.getAttribute('data-i18n');
+          if (langData[key]) {
+            el.textContent = langData[key];
+          }
+        });
+      }
+
+      document.addEventListener('keydown', function (event) {
+        if (event.key === 'Escape') {
+          closeAuditModal();
         }
-
-        let currentLang = 'EN';
-
-        const translations = {
-            EN: {
-                tagline: "Tiotia:ke (Montréal, QC) based · Web & Security Audit",
-                nav_value: "Fair Value", nav_services: "Services", nav_mailbox: "Outreach Vibe", nav_demo: "Sample Audit", nav_about: "About", nav_contact: "Contact", nav_cta: "Request 24h Audit ($125)",
-                hero_badge: "Tiotia:ke (Montréal) based & Remote Projects", hero_title_1: "Warm & Organic", hero_title_2: "tech solutions, just like your services.", hero_desc: "Full-stack repairs, mobile menu & layout debugging, security credential audits, and bilingual editorial reviews — supporting local vendors, artists & QTBiPOC creative communities in Tiotia:ke / Montréal.", hero_btn_primary: "Request $125 CAD Audit", hero_btn_secondary: "View Demonstration Audit", hero_stat1_title: "24 Hours", hero_stat1_desc: "Express Turnaround", hero_stat1_2_desc: "Fixed Upfront Price", hero_stat1_3_title: "100% Private", hero_stat1_3_desc: "Strict Confidentiality", hero_card_flag: "Flagship Offer", hero_card_sub: "24-Hour Express Turnaround", hero_card_title: "Website & Security Audit", hero_card_fixed: "Fixed upfront price", hero_card_body: "Receive 5 prioritized actionable findings with screenshots, exact line references, broken link/accessibility checks, exposed credential hygiene check, and clear fixes.", hero_card_item1: "Mobile layout & menu conversion review", hero_card_item2: "Bilingual consistency check (EN / FR)", hero_card_item3: "Security hygiene (Exposed API key/config check)", hero_card_item_confidential: "100% Confidential report (Never published)", hero_card_btn1: "Request $125 CAD Audit", hero_card_btn2: "Preview Sample Audit Report",
-                market_subtitle: "Fair Market Perspective", market_title: "Money Painfully Spent vs. Grounded Local Value", market_desc: "High-end digital agency quotes often fly into astronomical price ranges for simple fixes. Here is how my honest, independent rates keep your budget grounded.", m_bubble1_tag: "Agency Retainer Quote", m_bubble1_title: "Complex Corporate Onboarding", m_bubble1_desc: "3-week discovery calls, multiple account managers, and bloated PDF reports before a single line of code is fixed.", m_bubble2_tag: "Corporate Audit Firm", m_bubble2_title: "Automated Software Dump", m_bubble2_desc: "Generic software scans filled with tech buzzwords that lack human context, local Montréal bilingual nuance, or clear solutions.", m_bubble3_tag: "Hourly Markup Trap", m_bubble3_title: "Over-Engineered Scope", m_bubble3_desc: "Charging enterprise hours for minor CSS adjustments, menu fixes, or basic SSL certificate configurations.", sprout_tag: "Grounded Community Roots", sprout_sub: "Fair Local Pricing • No Corporate Bloat", m_khaleb_title: "Direct, Human & Accessible", m_khaleb_text: "You get a dedicated developer based in Tiotia:ke (Montréal) who inspects your site line-by-line. No account managers, no hidden retainer traps — just actionable fixes delivered within 24 hours.", m_row1_t: "24h Express Website Audit", m_row1_d: "5 prioritized findings & security hygiene", m_row2_t: "Full Mobile, Desktop & Performance Package", m_row2_d: "Clean responsive rebuild, zero jank, instant loading", m_khaleb_cta: "Choose Fair Local Pricing",
-                services_subtitle: "What I Do", services_title: "Full-Stack Code, Design & Security", services_desc: "Honest, outcome-focused freelance services designed to fix real technical problems for small businesses and independent creators.", s1_title: "24-Hour Website Audit", s1_price: "$125 CAD Upfront", s1_desc: "Comprehensive 5-point confidential report covering mobile clarity, call-to-action visibility, accessibility basics, page speed bottlenecks, and user trust signals.", s2_title: "Site & App Repair / Debugging", s2_price: "$295 CAD Package", s2_desc: "Fast troubleshooting for broken layouts, Javascript errors, mobile viewport bugs, React state issues, CSS fixes, and performance bottlenecks.", s3_title: "Security & Credential Hygiene", s3_price: "Authorized reviews only", s3_desc: "Audit sites or web repositories you own for accidentally exposed API keys, unsafe environment files (.env), missing SSL/CORS headers, and basic pentesting.", s4_title: "Web, App & Game Build", s4_price: "Single-page & full builds", s4_desc: "Building lightweight, high-speed modern single-page applications, custom HTML/Tailwind web tools, landing pages, and interactive web games.", s5_title: "Bilingual Copy & Music Reviews", s5_price: "Content & Editorial", s5_desc: "Human-sounding English & Montréal-French rewriting, blog posts, sales copy refinement, and articulate music/album reviews for independent artists.", s6_title: "Technical Maintenance", s6_price: "Flexible Retainer", s6_desc: "Monthly ongoing checkups, security updates, domain management, backups, and site updates so your online presence never falls behind.", service_select: "Select this service →",
-                mail_subtitle: "Communication Philosophy", mail_title: "Generic Email Spam vs. Authentic Community Vibe", mail_desc: "Small business owners and local artists get spammed daily by automated bots. Here is how my personal, transparent approach respects your inbox and builds long-term trust.", inbox_spam_t: "Generic Inbox Spam", inbox_spam_sub: "Automated Bot Pitches & Complaint Complaints", inbox_spam_badge: "99+ Unread Spam", spam1_subject: "\"URGENT: Your website page #1 ranking guaranteed!!\"", spam1_body: "Dear Sir/Madam, we noticed your website lacks backlinks. Pay $500/mo now for 10,000 links...", spam2_subject: "Review: \"Menu won't open on phone!\"", spam2_body: "\"Forced 15MB PDF download on mobile! Can't find opening hours or services!\"", spam_footer_t: "The Outcome:", spam_footer_d: "Ignored emails, frustrated website visitors, lost walk-in customers, and zero trust.", inbox_human_t: "Khaleb's Direct Outreach", inbox_human_sub: "Human, Local & Personalized", inbox_human_badge: "100% Transparent", human_mail_sub: "\"Small fix for your mobile site / Petit détail sur votre menu mobile\"", human_mail_body: "\"Bonjour! I was checking out your website on my phone and noticed your menu opens as a PDF download instead of a quick mobile view. I run $125 CAD 24-hour confidential audits for Montréal local businesses, vendors, and creators. All findings stay strictly private.\"", human_vibe_t: "Supporting Local & QTBiPOC Community Creators:", human_footer_t: "Long-Term Value:", human_footer_d: "Build real relationships that keep your brand thriving through winter.",
-                demo_subtitle: "Proof of Quality", demo_title: "Demonstration Website & Security Audit", demo_disclaimer: "*Demonstration report using a fictional Montréal café (North Star Café). No client relationship implied.", p_high: "HIGH PRIORITY", p_med: "MEDIUM PRIORITY", f1_title: "Finding 1: Unclear Primary Call to Action on Mobile", f2_title: "Finding 2: Mobile Contact Information Obscured", f3_title: "Finding 3: Weak Social Proof & Customer Reviews", f4_title: "Finding 4: Inconsistent Bilingual (EN / FR) Experience", f5_title: "Finding 5: Exposed Config & API Key Vulnerability", demo_banner_title: "Want a report like this for your website?", demo_banner_sub: "Delivered in 24 hours with exact prioritized fixes for $125 CAD. Strictly confidential.", demo_banner_btn: "View Full Sample PDF Layout",
-                proc_subtitle: "Protected & Confidential Workflow", proc_title: "5-Step Scam-Free Working Process", proc_desc: "Clear scope, upfront fixed pricing, 100% confidentiality, and transparent delivery protects both sides from fraud and hidden fees.", step1_t: "Submit Site", step1_d: "Send URL & permissions check via contact form.", step2_t: "Scope & Agreement", step2_d: "Fixed price ($125 CAD) and scope agreed in writing.", step3_t: "Secure Payment", step3_d: "Payment received via Interac e-Transfer or PayPal.", step4_t: "24h Confidential Report", step4_d: "Receive your private 5-point report & code fixes.", step5_t: "Optional Fixes", step5_d: "Implementation quoted separately with zero obligation.", fraud_title: "Strict Payment & Confidentiality Protection Policy", fraud_heading: "Zero Cheque / Verified Payments / 100% Client Privacy", fraud_text: "To prevent Canadian Anti-Fraud Centre job/service scams: Work begins strictly after payment is received via legitimate Interac e-Transfer or PayPal. No paper cheques, no overpayment requests, no gift cards, no crypto. Your technical audit findings and site data are 100% confidential and will never be shared or published.",
-                about_subtitle: "About Me", about_title: "Independent Web Specialist & Digital Auditor", about_bio_1: "I’m a Tiotia:ke (Montréal) based freelance developer, code repair specialist, and content reviewer. I help small local businesses, independent creators, and organizations fix broken websites, clean up code, and ensure their online presence is secure, bilingual, and easy to use.", about_bio_2: "My background spans web application design, frontend debugging (React, Node, HTML/CSS), digital security credential hygiene, and articulate writing. I don't use high-pressure sales tactics or bloated monthly agency contracts — just clear, practical technical work delivered on time.",
-                contact_subtitle: "Get In Touch", contact_title: "Request an Audit or Site Service", contact_desc: "Fill out the request form below. I will reply within a few hours to confirm scope, terms, and payment details. All audits are 100% confidential.", f_name: "Your Name *", f_email: "Email Address *", f_url: "Website URL to Review *", f_service: "Select Desired Service *", f_lang: "Target Audit Language", f_notes: "Project Notes or Specific Issues", f_perm: "I confirm that I own this website/repository or have explicit written permission from the owner to request a technical/security review.", f_btn: "Send Audit Request", succ_t: "Audit Request Received!", succ_d: "Thank you for reaching out. I will review your submitted URL and get back to your email within 2-4 hours with written scope confirmation, confidentiality agreement, and payment details."
-            },
-            FR: {
-                tagline: "Basé à Tiotia:ke (Montréal, QC) · Audit Web & Sécurité",
-                nav_value: "Valeur Juste", nav_services: "Services", nav_mailbox: "Style d'Approche", nav_demo: "Exemple d'Audit", nav_about: "À propos", nav_contact: "Contact", nav_cta: "Demander l'Audit 24h (125 $)",
-                hero_badge: "Basé à Tiotia:ke (Montréal) & Projets à distance", hero_title_1: "Chaleureux & Organiques", hero_title_2: "des solutions tech, à l'image de vos services.", hero_desc: "Réparations full-stack, débogage de menus mobiles, audits de sécurité et révision éditoriale bilingue — au service des créateurs, commerçants locaux et communautés QTBiPOC à Tiotia:ke / Montréal.", hero_btn_primary: "Demander l'Audit à 125 $ CAD", hero_btn_secondary: "Voir un Exemple d'Audit", hero_stat1_title: "24 Heures", hero_stat1_desc: "Délai de Livraison Express", hero_stat1_2_desc: "Prix Fixe à l'Avance", hero_stat1_3_title: "100% Privé", hero_stat1_3_desc: "Confidentialité Stricte", hero_card_flag: "Offre Vedette", hero_card_sub: "Livraison Express 24h", hero_card_title: "Audit Web & Sécurité", hero_card_fixed: "Prix fixe sans surprise", hero_card_body: "Recevez 5 recommandations prioritaires avec captures d'écran, références exactes de lignes de code, vérification de liens brisés, et analyse des clés d'API exposées.", hero_card_item1: "Examen de l'ergonomie mobile & conversion", hero_card_item2: "Vérification de la cohérence bilingue (EN / FR)", hero_card_item3: "Audit de sécurité (Clés API & config exposées)", hero_card_item_confidential: "Rapport 100% confidentiel (Jamais publié)", hero_card_btn1: "Commander l'Audit (125 $ CAD)", hero_card_btn2: "Voir l'Exemple d'Audit",
-                market_subtitle: "Perspective du Marché", market_title: "Dépenses Excessives vs. Valeur Locale Accessible", market_desc: "Les devis d'agences atteignent souvent des sommes astronomiques pour des corrections simples. Voici comment mes tarifs honnêtes gardent votre budget sous contrôle.", m_bubble1_tag: "Devis d'Agence (Forfait)", m_bubble1_title: "Intégration d'Entreprise Complexe", m_bubble1_desc: "Des semaines de réunions, plusieurs gestionnaires de compte, et des rapports PDF gonflés avant même la première ligne de code.", m_bubble2_tag: "Cabinet d'Audit Corporatif", m_bubble2_title: "Rapport Logiciel Automatisé", m_bubble2_desc: "Des scans génériques remplis de jargon technique qui manquent de contexte humain, de nuances bilingues montréalaises, ou de solutions claires.", m_bubble3_tag: "Piège de la Facturation Horaire", m_bubble3_title: "Portée Sur-Ingénierie", m_bubble3_desc: "Facturer des tarifs d'entreprise pour des ajustements CSS mineurs, des corrections de menus, ou des configurations SSL basiques.", sprout_tag: "Racines Communautaires", sprout_sub: "Tarification Locale Équitable • Sans Surplus Corporate", m_khaleb_title: "Direct, Humain & Accessible", m_khaleb_text: "Vous avez un développeur dédié basé à Tiotia:ke (Montréal) qui inspecte votre site ligne par ligne. Pas d'intermédiaires, pas de pièges de forfaits cachés — juste des corrections concrètes livrées en 24 heures.", m_row1_t: "Audit Web Express 24h", m_row1_d: "5 constats prioritaires & hygiène de sécurité", m_row2_t: "Forfait Complet Mobile, Desktop & Performance", m_row2_d: "Refonte responsive propre, sans ralentissement, chargement instantané", m_khaleb_cta: "Choisir un Tarif Local Équitable",
-                services_subtitle: "Ce que je fais", services_title: "Code Full-Stack, Design & Sécurité", services_desc: "Des services freelance honnêtes et axés sur les résultats, conçus pour résoudre de vrais problèmes techniques pour les petites entreprises et les créateurs indépendants.", s1_title: "Audit Web en 24 Heures", s1_price: "125 $ CAD à l'avance", s1_desc: "Rapport confidentiel complet en 5 points couvrant la clarté mobile, la visibilité des appels à l'action, les bases de l'accessibilité, les goulots d'étranglement de vitesse, et les signaux de confiance.", s2_title: "Réparation & Débogage de Site / App", s2_price: "Forfait 295 $ CAD", s2_desc: "Dépannage rapide pour les mises en page brisées, erreurs JavaScript, bogues d'affichage mobile, états React, CSS et vitesse.", s3_title: "Sécurité & Hygiène Numérique", s3_price: "Projets autorisés uniquement", s3_desc: "Audit de vos sites et dépôts dont vous êtes propriétaire pour détecter les clés API exposées, fichiers .env vulnérables et tester SSL/CORS.", s4_title: "Création Web, App & Jeux", s4_price: "Sites uniques & projets complets", s4_desc: "Développement d'applications web modernes en page unique, outils HTML/Tailwind sur mesure, pages d'atterrissage et jeux web interactifs.", s5_title: "Rédaction Bilingue & Critiques", s5_price: "Contenu & Éditorial", s5_desc: "Rédaction naturelle en anglais et français de Montréal, articles de blog, optimisation de textes de vente et critiques musicales d'albums.", s6_title: "Maintenance Technique", s6_price: "Forfait mensuel flexible", s6_desc: "Suivi régulier, mises à jour de sécurité, gestion du nom de domaine et sauvegardes pour garder votre site performant.", service_select: "Sélectionner ce service →",
-                mail_subtitle: "Philosophie de Communication", mail_title: "Spam Générique vs. Approche Humaine Communautaire", mail_desc: "Les PME et artistes locaux reçoivent quotidiennement des messages automatisés. Voici comment mon approche personnelle et transparente respecte votre boîte de réception.", inbox_spam_t: "Boîte de Réception d'Agence (Spam)", inbox_spam_sub: "Prospection Automatisée & Plaintes Clients", inbox_spam_badge: "99 + Spams Non Lus", spam1_subject: "\"URGENT : Référencement #1 garanti pour votre site web !!\"", spam1_body: "Cher Monsieur/Madame, nous avons remarqué que votre site manque de liens. Payez 500 $/mois pour 10 000 liens...", spam2_subject: "Avis : \"Le menu ne s'ouvre pas sur mon téléphone !\"", spam2_body: "\"Téléchargement PDF 15Mo forcé sur mobile ! Heures d'ouverture introuvables !\"", spam_footer_t: "Le Résultat :", spam_footer_d: "Courriels ignorés, visiteurs frustrés, perte de clients et zéro confiance.", inbox_human_t: "Contact Direct par Khaleb", inbox_human_sub: "Humain, Local & Personnalisé", inbox_human_badge: "100% Transparent", human_mail_sub: "\"Petit détail sur votre menu mobile / Small fix for your mobile site\"", human_mail_body: "\"Bonjour ! En visitant votre site sur mon téléphone, j'ai remarqué que le menu s'ouvre sous forme de PDF au lieu d'un affichage mobile fluide. J'offre des audits confidentiels de 24h à 125 $ CAD pour les PME et créateurs de Montréal. Tous les constats restent strictement privés.\"", human_vibe_t: "Soutien aux Créateurs & Communautés QTBiPOC Locales :", human_footer_t: "Valeur à Long Terme :", human_footer_d: "Construire de vraies relations pour faire rayonner votre marque toute l'année.",
-                demo_subtitle: "Preuve de Qualité", demo_title: "Exemple d'Audit Web & Sécurité", demo_disclaimer: "*Exemple basé sur un café fictif de Montréal (Café Étoile du Nord). Aucun partenariat réel.", p_high: "HAUTE PRIORITÉ", p_med: "PRIORITÉ MOYENNE", f1_title: "Constat 1 : Appel à l'action principal flou sur mobile", f2_title: "Constat 2 : Coordonnées difficiles à trouver sur mobile", f3_title: "Constat 3 : Manque d'avis clients & de preuve sociale", f4_title: "Constat 4 : Incohérences dans l'expérience bilingue (EN / FR)", f5_title: "Constat 5 : Clé API & Fichier de Configuration Exposé", demo_banner_title: "Vous voulez un audit similaire pour votre site ?", demo_banner_sub: "Livré en 24h avec des corrections concrètes pour 125 $ CAD. Strictement confidentiel.", demo_banner_btn: "Voir la mise en page PDF complète",
-                proc_subtitle: "Processus Protégé & Confidentiel", proc_title: "Processus de Travail Sécurisé en 5 Étapes", proc_desc: "Un mandat clair, des tarifs fixes, une confidentialité totale et une livraison transparente protègent les deux parties.", step1_t: "Soumission du site", step1_d: "Envoyez l'URL et l'autorisation via le formulaire.", step2_t: "Accord & Portée", step2_d: "Prix fixe (125 $ CAD) et objectifs confirmés par écrit.", step3_t: "Paiement Sécurisé", step3_d: "Paiement reçu via Virement Interac ou PayPal.", step4_t: "Rapport 24h Confidentiel", step4_d: "Réception de votre rapport privé en 5 points et corrections.", step5_t: "Correctifs Optionnels", step5_d: "Implémentation sur devis séparé sans obligation.", fraud_title: "Politique de Protection Anti-Fraude & Confidentialité", fraud_heading: "Aucun Chèque / Paiements Vérifiés / 100% Privé", fraud_text: "Conformément aux directives du Centre antifraude du Canada : Le travail débute strictement après réception du paiement via Virement Interac ou PayPal. Aucun chèque papier, aucun surpaiement, ni crypto. Vos données et vos audits sont 100% confidentiels et ne seront jamais publiés.",
-                about_subtitle: "À propos", about_title: "Spécialiste Web Indépendant & Auditeur Numérique", about_bio_1: "Je suis un développeur indépendant basé à Tiotia:ke (Montréal). J'aide les PME locales et les créateurs à réparer leurs sites web, nettoyer leur code et s'assurer que leur présence en ligne est rapide, bilingue et sécurisée.", about_bio_2: "Mon parcours inclut le développement d'applications web, le débogage frontend (React, Node, HTML/CSS), la sécurité des données et la rédaction. Aucun contrat d'agence gonflé — seulement du travail technique clair et livré à temps.",
-                contact_subtitle: "Contact", contact_title: "Demander un Audit ou un Service Web", contact_desc: "Remplissez le formulaire ci-dessous. Je répondrai en quelques heures pour confirmer les détails et les modalités de paiement. Tous les audits sont 100% confidentiels.", f_name: "Votre nom *", f_email: "Adresse courriel *", f_url: "URL du site à analyser *", f_service: "Service désiré *", f_lang: "Langue ciblée pour l'audit", f_notes: "Notes sur le projet ou problèmes spécifiques", f_perm: "Je confirme être propriétaire de ce site ou posséder l'autorisation écrite du propriétaire pour demander cet audit.", f_btn: "Envoyer la demande", succ_t: "Demande d'audit reçue !", succ_d: "Merci pour votre message. Je vais analyser l'URL soumise et vous contacter par courriel d'ici 2 à 4 heures avec la confirmation de la portée et les instructions de paiement."
-            }
-        };
-
-        function toggleLanguage() {
-            currentLang = currentLang === 'EN' ? 'FR' : 'EN';
-            document.documentElement.lang = currentLang.toLowerCase();
-            document.getElementById('langLabel').textContent = currentLang === 'EN' ? 'FR 🇨🇦' : 'EN 🇨🇦';
-            const langData = translations[currentLang];
-            document.querySelectorAll('[data-i18n]').forEach(el => {
-                const key = el.getAttribute('data-i18n');
-                if (langData[key]) {
-                    el.textContent = langData[key];
-                }
-            });
-        }
+      });
     </script>
-</body>
+  </body>
 </html>
